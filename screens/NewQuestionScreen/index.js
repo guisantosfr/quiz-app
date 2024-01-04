@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function StudentScreen() {
+export default function NewQuestionScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.buttonText}>Sou aluno</Text>
+      <Text>Nova Questão</Text>
     </View>
   )
 }
@@ -14,14 +14,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  buttonText: {
-    color: '#000',
-    fontSize: 20,
-    marginTop: 7,
-    display: 'flex',
-    alignSelf: 'center',
   }
-
 })
