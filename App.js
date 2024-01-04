@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './screens/HomeScreen';
-import TeacherScreen from './screens/TeacherScreen';
-import StudentScreen from './screens/StudentScreen';
-import NewClassScreen from './screens/NewClassScreen';
-import NewQuestionScreen from './screens/NewQuestionScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import TeacherScreen from './src/screens/TeacherScreen';
+import StudentScreen from './src/screens/StudentScreen';
+import NewClassScreen from './src/screens/NewClassScreen';
+import NewQuestionScreen from './src/screens/NewQuestionScreen';
 
 const Stack = createNativeStackNavigator();
 
