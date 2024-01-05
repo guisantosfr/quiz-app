@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Button from '../../components/Button';
+import { pickDocumentAsync } from '../../helpers/pickDocument';
 
-export default function NewQuestionScreen({ navigation }) {
+export default function NewQuestionScreen() {
   return (
     <View style={styles.container}>
-      <Text>Nova Questão</Text>
+      <Button text="Ler planilha de questões" onPress={pickDocumentAsync} />
     </View>
   )
 }

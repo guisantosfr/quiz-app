@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { pickDocumentAsync } from '../../helpers/pickDocument';
+import Button from '../../components/Button';
 
-export default function NewClassScreen({ navigation }) {
+export default function NewClassScreen() {
   return (
     <View style={styles.container}>
-      <Text>Nova Turma</Text>
+      <Button text="Ler planilha de alunos" onPress={pickDocumentAsync} />
     </View>
   )
 }
