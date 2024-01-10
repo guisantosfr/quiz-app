@@ -22,14 +22,12 @@ export default function NewClassScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Nome da turma:</Text>
-      <Input onChangeText={setClassName} value={className} />
-
+      <Input onChangeText={setClassName} value={className} placeholder="Nome da turma" />
       <Button text="Ler planilha de alunos" onPress={handleUpload} />
+
       <Text>Nome da turma: {className}</Text>
       <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
-      <Text>{!classData ? 'Sem dados da turma' : JSON.stringify(classData)}
-      </Text>
+      <Text>{!classData ? 'Sem dados da turma' : JSON.stringify(classData)}</Text>
 
       <Button text="Salvar turma" />
     </View>

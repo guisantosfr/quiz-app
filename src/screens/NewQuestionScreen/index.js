@@ -21,8 +21,7 @@ export default function NewQuestionScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Nome do questionário:</Text>
-      <Input onChangeText={setQuizName} value={quizName} />
+      <Input onChangeText={setQuizName} value={quizName} placeholder="Nome do questionário" />
 
       <Button text="Ler planilha de questões" onPress={handleUpload} />
       <Text>Nome do questionário: {quizName}</Text>
