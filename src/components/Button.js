@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function Button({ text, onPress }) {
   return (
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00d',
     marginVertical: 30,
     height: 50,
-    width: 250,
+    width: Dimensions.get('window').width / 2,
     borderRadius: 15
   },
 

@@ -2,6 +2,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
 import Button from '../../components/Button';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
+import Input from '../../components/Input';
 
 export default function NewQuestionScreen() {
   const [quizName, setQuizName] = useState('');
@@ -20,10 +21,11 @@ export default function NewQuestionScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>Nome do questionário:</Text>
-      <TextInput onChangeText={setQuizName} value={quizName} />
+      <Text style={styles.title}>Nome do questionário:</Text>
+      <Input onChangeText={setQuizName} value={quizName} />
 
       <Button text="Ler planilha de questões" onPress={handleUpload} />
+      <Text>Nome do questionário: {quizName}</Text>
       <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
       <Text>{!quizData ? 'Sem dados da turma' : JSON.stringify(quizData)}
       </Text>
@@ -39,5 +41,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  title: {
+    fontSize: 20
   }
 })

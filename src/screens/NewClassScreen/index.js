@@ -2,6 +2,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { useState } from 'react';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 export default function NewClassScreen() {
   const [className, setClassName] = useState('');
@@ -21,10 +22,11 @@ export default function NewClassScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>Nome da turma:</Text>
-      <TextInput onChangeText={setClassName} value={className} />
+      <Text style={styles.title}>Nome da turma:</Text>
+      <Input onChangeText={setClassName} value={className} />
 
       <Button text="Ler planilha de alunos" onPress={handleUpload} />
+      <Text>Nome da turma: {className}</Text>
       <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
       <Text>{!classData ? 'Sem dados da turma' : JSON.stringify(classData)}
       </Text>
@@ -40,5 +42,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  title: {
+    fontSize: 20
   }
 })
