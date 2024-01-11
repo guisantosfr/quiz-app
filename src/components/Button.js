@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00d',
     marginVertical: 30,
     height: 50,
-    width: Dimensions.get('window').width / 2,
+    width: Dimensions.get('window').width * 0.6,
     borderRadius: 15
   },
 

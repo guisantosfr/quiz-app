@@ -1,6 +1,6 @@
 import { getDocumentAsync } from 'expo-document-picker';
 import { readAsStringAsync } from 'expo-file-system';
-import { read, readFile, utils } from 'xlsx';
+import { read, utils } from 'xlsx';
 
 export const pickDocumentAsync = async () => {
   try {
@@ -19,10 +19,10 @@ export const pickDocumentAsync = async () => {
     const ws = workbook.Sheets[wsName];
 
     //Array de objetos
-    const data = utils.sheet_to_json(ws);
+    //const data = utils.sheet_to_json(ws);
 
     //Array de arrays
-    //const data = utils.sheet_to_json(ws, { header: 1 });
+    const data = utils.sheet_to_json(ws, { header: 1 });
 
     return {
       fileName: result.assets[0].name,

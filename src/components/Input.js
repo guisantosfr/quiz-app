@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     margin: 20,
     borderWidth: 1,
     padding: 12,
-    width: Dimensions.get('window').width / 2,
+    width: Dimensions.get('window').width * 0.6,
     borderRadius: 10
   }
 })
