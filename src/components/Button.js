@@ -14,14 +14,14 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 50,
     width: Dimensions.get('window').width * 0.6,
-    borderRadius: 15
+    borderRadius: 15,
+
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   buttonText: {
     color: '#ddd',
-    fontSize: 20,
-    marginTop: 7,
-    display: 'flex',
-    alignSelf: 'center',
+    fontSize: 18
   }
 })
