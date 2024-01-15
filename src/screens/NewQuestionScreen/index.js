@@ -46,8 +46,6 @@ export default function NewQuestionScreen() {
       <Button text="Ler planilha de questões" onPress={handleUpload} />
       <Text>Nome do questionário: {quizName}</Text>
       <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
-      <Text>{!quizData ? 'Sem dados da turma' : JSON.stringify(quizData)}
-      </Text>
 
       <Button text="Salvar Questionário" onPress={saveQuiz} />
     </View>

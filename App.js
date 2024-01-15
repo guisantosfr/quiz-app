@@ -6,6 +6,8 @@ import TeacherScreen from './src/screens/TeacherScreen';
 import StudentScreen from './src/screens/StudentScreen';
 import NewClassScreen from './src/screens/NewClassScreen';
 import NewQuestionScreen from './src/screens/NewQuestionScreen';
+import ClassesScreen from './src/screens/ClassesScreen';
+import QuizzesScreen from './src/screens/QuizzesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +22,8 @@ export default function App() {
         <Stack.Screen name='Student' component={StudentScreen} />
         <Stack.Screen name='New class' component={NewClassScreen} />
         <Stack.Screen name='New questions' component={NewQuestionScreen} />
+        <Stack.Screen name='Classes' component={ClassesScreen} />
+        <Stack.Screen name='Quizzes' component={QuizzesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

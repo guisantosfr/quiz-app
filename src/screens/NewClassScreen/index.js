@@ -27,11 +27,6 @@ export default function NewClassScreen() {
       email
     }))
 
-    console.log({
-      className,
-      savedStudents
-    });
-
     await api.post('/classes', {
       className,
       students: savedStudents
@@ -51,7 +46,6 @@ export default function NewClassScreen() {
 
       <Text>Nome da turma: {className}</Text>
       <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
-      <Text>{!students ? 'Sem dados da turma' : JSON.stringify(students)}</Text>
 
       <Button text="Salvar turma" onPress={saveClass} />
     </View>
