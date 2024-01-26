@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
 import Button from '../../components/Button';
@@ -10,6 +10,16 @@ export default function NewQuestionScreen() {
   const [quizData, setQuizData] = useState(null);
   const [fileName, setFileName] = useState(null);
 
+  const [notification, setNotification] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNotification('')
+      setErrorMessage(false)
+    }, 3000)
+  }, [notification])
+
   const handleUpload = async () => {
     try {
       const result = await pickDocumentAsync();
@@ -17,6 +27,8 @@ export default function NewQuestionScreen() {
       setFileName(result.fileName);
     } catch (error) {
       console.error('Error:', error);
+      setNotification('Erro');
+      setErrorMessage(true);
     }
   }
 
@@ -31,7 +43,8 @@ export default function NewQuestionScreen() {
       quizName,
       questions: savedQuestions
     }).then(function (response) {
-      console.log('OK');
+      setNotification(`O questionário ${quizName} foi criado com sucesso`);
+      //console.log('OK');
       //console.log(response);
     })
       .catch(function (error) {
@@ -41,6 +54,18 @@ export default function NewQuestionScreen() {
 
   return (
     <View style={styles.container}>
+      {
+        notification?.length > 0 ? (
+          !errorMessage ? (
+            <Text style={styles.notification}>{notification}</Text>
+          ) : (
+            <Text style={styles.error}>{notification}</Text>
+          )
+        ) : (
+          <></>
+        )
+      }
+
       <Input onChangeText={setQuizName} value={quizName} placeholder="Nome do questionário" />
 
       <Button text="Ler planilha de questões" onPress={handleUpload} />
@@ -62,5 +87,13 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 20
+  },
+
+  notification: {
+    color: '#0c0'
+  },
+
+  error: {
+    color: '#c00'
   }
 })

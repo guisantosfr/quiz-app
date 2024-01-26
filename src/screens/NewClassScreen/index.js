@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
 import Button from '../../components/Button';
@@ -10,6 +10,16 @@ export default function NewClassScreen() {
   const [students, setStudents] = useState(null);
   const [fileName, setFileName] = useState(null);
 
+  const [notification, setNotification] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNotification('')
+      setErrorMessage(false)
+    }, 3000)
+  }, [notification])
+
   const handleUpload = async () => {
     try {
       const result = await pickDocumentAsync();
@@ -17,6 +27,8 @@ export default function NewClassScreen() {
       setFileName(result.fileName);
     } catch (error) {
       console.error('Error:', error);
+      setNotification('Erro');
+      setErrorMessage(true);
     }
   }
 
@@ -31,16 +43,31 @@ export default function NewClassScreen() {
       className,
       students: savedStudents
     }).then(function (response) {
-      console.log('OK');
+      setNotification(`A turma ${className} foi criada com sucesso`);
+      //console.log('OK');
       //console.log(response);
     })
       .catch(function (error) {
         console.error(error);
+        setNotification('Erro');
+        setErrorMessage(true);
       });
   }
 
   return (
     <View style={styles.container}>
+      {
+        notification?.length > 0 ? (
+          !errorMessage ? (
+            <Text style={styles.notification}>{notification}</Text>
+          ) : (
+            <Text style={styles.error}>{notification}</Text>
+          )
+        ) : (
+          <></>
+        )
+      }
+
       <Input onChangeText={setClassName} value={className} placeholder="Nome da turma" />
       <Button text="Ler planilha de alunos" onPress={handleUpload} />
 
@@ -62,5 +89,13 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 20
+  },
+
+  notification: {
+    color: '#0c0'
+  },
+
+  error: {
+    color: '#c00'
   }
 })
