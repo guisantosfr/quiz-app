@@ -5,8 +5,11 @@ import { read, utils } from 'xlsx';
 export const pickDocumentAsync = async () => {
   try {
     let result = await getDocumentAsync({
-      //.xlsx
-      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      type: [
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "text/csv"
+      ]
     });
 
     const temp = await readAsStringAsync(result.assets[0].uri, {
