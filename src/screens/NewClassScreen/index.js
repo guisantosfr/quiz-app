@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
@@ -21,18 +21,21 @@ export default function NewClassScreen() {
   }, [notification])
 
   const handleUpload = async () => {
-    try {
-      const result = await pickDocumentAsync();
-      setStudents(result.data);
-      setFileName(result.fileName);
-    } catch (error) {
-      console.error('Error:', error);
-      setNotification('Erro');
-      setErrorMessage(true);
-    }
+    const result = await pickDocumentAsync();
+
+    if (!result) return;
+
+    setStudents(result.data);
+    setFileName(result.fileName);
   }
 
   const saveClass = async () => {
+    if (!className || !students) {
+      setNotification('Nome da turma e planilha de alunos são obrigatórios');
+      setErrorMessage(true);
+      return;
+    }
+
     const savedStudents = students.map(([matricula, name, email]) => ({
       matricula,
       name,
@@ -44,13 +47,13 @@ export default function NewClassScreen() {
       students: savedStudents
     }).then(function (response) {
       setNotification(`A turma ${className} foi criada com sucesso`);
-      //console.log('OK');
-      //console.log(response);
+
+      setClassName('');
+      setStudents(null);
+      setFileName(null);
     })
       .catch(function (error) {
-        console.error(error);
-        setNotification('Erro');
-        setErrorMessage(true);
+        console.error('ERRO', error);
       });
   }
 

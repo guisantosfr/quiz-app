@@ -21,18 +21,22 @@ export default function NewQuestionScreen() {
   }, [notification])
 
   const handleUpload = async () => {
-    try {
-      const result = await pickDocumentAsync();
-      setQuizData(result.data);
-      setFileName(result.fileName);
-    } catch (error) {
-      console.error('Error:', error);
-      setNotification('Erro');
-      setErrorMessage(true);
-    }
+    const result = await pickDocumentAsync();
+
+    if (!result) return;
+
+    setQuizData(result.data);
+    setFileName(result.fileName);
   }
 
+
   const saveQuiz = async () => {
+    if (!quizName || !quizData) {
+      setNotification('Nome do questionário e planilha de questões são obrigatórios');
+      setErrorMessage(true);
+      return;
+    }
+
     const savedQuestions = quizData.map(([subject, question, answer]) => ({
       subject,
       question,
@@ -44,8 +48,10 @@ export default function NewQuestionScreen() {
       questions: savedQuestions
     }).then(function (response) {
       setNotification(`O questionário ${quizName} foi criado com sucesso`);
-      //console.log('OK');
-      //console.log(response);
+
+      setQuizName('');
+      setQuizData(null);
+      setFileName(null);
     })
       .catch(function (error) {
         console.error(error);
