@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 
@@ -25,9 +25,14 @@ export default function NewClassScreen() {
         classes.length === 0 ?
           <Text>Não há turmas cadastradas</Text>
           :
-          classes.map((item, index) => (
-            <Text key={index}>{item.className}</Text>
-          ))
+          <FlatList
+            data={classes}
+            renderItem={({ item }) => <Text>{item.className}</Text>}
+          />
+
+        //classes.map((item, index) => (
+        //  <Text key={index}>{item.className}</Text>
+        //))
       }
 
     </View>

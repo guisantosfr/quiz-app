@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 
@@ -9,7 +9,7 @@ export default function NewClassScreen() {
     const fetchData = async () => {
       try {
         const result = await api.get('/quizzes');
-        setQuizzes(result.data)
+        setQuizzes(result.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -23,9 +23,11 @@ export default function NewClassScreen() {
       {
         quizzes.length === 0 ?
           <Text>Não há questionários cadastrados</Text>
-          : quizzes.map((item, index) => (
-            <Text key={index}>{item.quizName}</Text>
-          ))
+          :
+          <FlatList
+            data={quizzes}
+            renderItem={({ item }) => <Text>{item.quizName} - {item.quizCode}</Text>}
+          />
       }
 
     </View>
