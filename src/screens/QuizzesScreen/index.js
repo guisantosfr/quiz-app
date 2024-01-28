@@ -24,10 +24,15 @@ export default function NewClassScreen() {
         quizzes.length === 0 ?
           <Text>Não há questionários cadastrados</Text>
           :
-          <FlatList
-            data={quizzes}
-            renderItem={({ item }) => <Text>{item.quizName} - {item.quizCode}</Text>}
-          />
+          //<FlatList
+          //  data={quizzes}
+          //  renderItem={({ item }) => <Text>{item.quizName} - {item.quizCode}</Text>}
+          ///>
+
+          quizzes.map((item, index) => (
+            <Text key={index}>{item.quizName} - {item.quizCode}</Text>
+          ))
+
       }
 
     </View>
