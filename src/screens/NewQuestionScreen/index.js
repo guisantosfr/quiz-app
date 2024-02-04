@@ -2,6 +2,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
+import globalStyles from '../../utils/globalStyles';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
@@ -59,7 +60,7 @@ export default function NewQuestionScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       {
         notification?.length > 0 ? (
           !errorMessage ? (
@@ -84,13 +85,6 @@ export default function NewQuestionScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   title: {
     fontSize: 20
   },

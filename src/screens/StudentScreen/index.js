@@ -1,5 +1,6 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
+import globalStyles from '../../utils/globalStyles';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
@@ -12,7 +13,7 @@ export default function StudentScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Input onChangeText={setEmail} placeholder="Email" value={email} />
       <Input onChangeText={setQuizCode} placeholder="Código" value={quizCode} />
 
@@ -20,21 +21,3 @@ export default function StudentScreen() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  buttonText: {
-    color: '#000',
-    fontSize: 20,
-    marginTop: 7,
-    display: 'flex',
-    alignSelf: 'center',
-  }
-
-})

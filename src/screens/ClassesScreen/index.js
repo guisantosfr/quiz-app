@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
+import globalStyles from '../../utils/globalStyles';
 
 
 export default function NewClassScreen() {
@@ -20,7 +21,7 @@ export default function NewClassScreen() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       {
         classes.length === 0 ?
           <Text>Não há turmas cadastradas</Text>
@@ -38,12 +39,3 @@ export default function NewClassScreen() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
