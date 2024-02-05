@@ -1,10 +1,10 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import globalStyles from '../../utils/globalStyles';
+import SecondaryButton from '../../components/SecondaryButton';
 
-
-export default function NewClassScreen() {
+export default function ClassesScreen() {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
@@ -26,16 +26,15 @@ export default function NewClassScreen() {
         classes.length === 0 ?
           <Text>Não há turmas cadastradas</Text>
           :
-          //<FlatList
-          //  data={classes}
-          //  renderItem={({ item }) => <Text>{item.className}</Text>}
-          ///>
-
-          classes.map((item, index) => (
-            <Text key={index}>{item.className}</Text>
-          ))
+          <>
+            <Text>Turmas cadastradas</Text>
+            {
+              classes.map((item, index) => (
+                <SecondaryButton key={index} text={item.className} />
+              ))
+            }
+          </>
       }
-
     </View>
   )
 }

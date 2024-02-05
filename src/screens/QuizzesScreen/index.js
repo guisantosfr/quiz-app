@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import globalStyles from '../../utils/globalStyles';
+import SecondaryButton from '../../components/SecondaryButton';
 
 export default function NewClassScreen() {
   const [quizzes, setQuizzes] = useState([]);
@@ -25,14 +26,14 @@ export default function NewClassScreen() {
         quizzes.length === 0 ?
           <Text>Não há questionários cadastrados</Text>
           :
-          //<FlatList
-          //  data={quizzes}
-          //  renderItem={({ item }) => <Text>{item.quizName} - {item.quizCode}</Text>}
-          ///>
-
-          quizzes.map((item, index) => (
-            <Text key={index}>{item.quizName} - {item.quizCode}</Text>
-          ))
+          <>
+            <Text>Questionários cadastrados</Text>
+            {
+              quizzes.map((item, index) => (
+                <SecondaryButton key={index} text={item.quizName} />
+              ))
+            }
+          </>
 
       }
 
