@@ -1,11 +1,11 @@
-import { Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import globalStyles from '../../utils/globalStyles';
 import SecondaryButton from '../../components/SecondaryButton';
 
 export default function ClassesScreen() {
-  const [classes, setClasses] = useState([]);
+  const [classes, setClasses] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,17 +23,22 @@ export default function ClassesScreen() {
   return (
     <View style={globalStyles.container}>
       {
-        classes.length === 0 ?
-          <Text>Não há turmas cadastradas</Text>
+        !classes ?
+          <ActivityIndicator size="large" color="#00d" />
           :
-          <>
-            <Text>Turmas cadastradas</Text>
-            {
-              classes.map((item, index) => (
-                <SecondaryButton key={index} text={item.className} />
-              ))
-            }
-          </>
+          (
+            classes.length === 0 ?
+              <Text>Não há turmas cadastradas</Text>
+              :
+              <>
+                <Text>Turmas cadastradas</Text>
+                {
+                  classes.map((item, index) => (
+                    <SecondaryButton key={index} text={item.className} />
+                  ))
+                }
+              </>
+          )
       }
     </View>
   )

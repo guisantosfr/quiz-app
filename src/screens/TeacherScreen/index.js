@@ -9,6 +9,7 @@ export default function TeacherScreen({ navigation }) {
       <Button text="Cadastrar questões" onPress={() => navigation.navigate('New questions')} />
       <Button text="Ver turmas" onPress={() => navigation.navigate('Classes')} />
       <Button text="Ver questionários" onPress={() => navigation.navigate('Quizzes')} />
+      <Button text="Aplicar questionário" onPress={() => navigation.navigate('Apply')} />
     </View>
   )
 }
