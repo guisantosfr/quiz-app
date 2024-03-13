@@ -34,7 +34,7 @@ export default function ClassesScreen() {
                 <Text>Turmas cadastradas</Text>
                 {
                   classes.map((item, index) => (
-                    <SecondaryButton key={index} text={item.className} />
+                    <SecondaryButton key={index} text={item.name} />
                   ))
                 }
               </>

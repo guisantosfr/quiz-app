@@ -34,7 +34,7 @@ export default function NewClassScreen() {
                 <Text>Questionários cadastrados</Text>
                 {
                   quizzes.map((item, index) => (
-                    <SecondaryButton key={index} text={item.quizName} />
+                    <SecondaryButton key={index} text={item.name} />
                   ))
                 }
               </>

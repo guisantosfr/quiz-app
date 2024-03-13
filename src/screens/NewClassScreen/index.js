@@ -36,15 +36,15 @@ export default function NewClassScreen() {
       setErrorMessage(true);
       return;
     }
-
-    const savedStudents = students.map(([matricula, name, email]) => ({
-      matricula,
+    
+    const savedStudents = students.map(([id, name, email]) => ({
+      id,
       name,
       email
-    }))
-
+    }));
+   
     await api.post('/classes', {
-      className,
+      name: className,
       students: savedStudents
     }).then(function (response) {
       setNotification(`A turma ${className} foi criada com sucesso`);
@@ -54,7 +54,7 @@ export default function NewClassScreen() {
       setFileName(null);
     })
       .catch(function (error) {
-        console.error('ERRO', error);
+        console.error(error);
       });
   }
 

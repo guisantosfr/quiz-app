@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
@@ -6,7 +6,7 @@ import globalStyles from '../../utils/globalStyles';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
-export default function NewQuestionScreen() {
+export default function NewQuizScreen() {
   const [quizName, setQuizName] = useState('');
   const [quizData, setQuizData] = useState(null);
   const [fileName, setFileName] = useState(null);
@@ -30,7 +30,6 @@ export default function NewQuestionScreen() {
     setFileName(result.fileName);
   }
 
-
   const saveQuiz = async () => {
     if (!quizName || !quizData) {
       setNotification('Nome do questionário e planilha de questões são obrigatórios');
@@ -38,14 +37,15 @@ export default function NewQuestionScreen() {
       return;
     }
 
-    const savedQuestions = quizData.map(([subject, question, answer]) => ({
-      subject,
+    const savedQuestions = quizData.map(([subject, topic, question, answer]) => ({
+      subject, 
+      topic,
       question,
       answer
     }))
 
     await api.post('/quizzes', {
-      quizName,
+      name: quizName,
       questions: savedQuestions
     }).then(function (response) {
       setNotification(`O questionário ${quizName} foi criado com sucesso`);
