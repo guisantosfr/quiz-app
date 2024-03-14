@@ -74,11 +74,8 @@ export default function NewQuizScreen() {
       }
 
       <Input onChangeText={setQuizName} value={quizName} placeholder="Nome do questionário" />
-
-      <Button text="Ler planilha de questões" onPress={handleUpload} />
-      <Text>Nome do questionário: {quizName}</Text>
       <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
-
+      <Button text="Ler planilha de questões" onPress={handleUpload} />
       <Button text="Salvar Questionário" onPress={saveQuiz} />
     </View>
   )

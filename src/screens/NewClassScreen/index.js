@@ -73,11 +73,8 @@ export default function NewClassScreen() {
       }
 
       <Input onChangeText={setClassName} value={className} placeholder="Nome da turma" />
-      <Button text="Ler planilha de alunos" onPress={handleUpload} />
-
-      <Text>Nome da turma: {className}</Text>
       <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
-
+      <Button text="Ler planilha de alunos" onPress={handleUpload} />
       <Button text="Salvar turma" onPress={saveClass} />
     </View>
   )
