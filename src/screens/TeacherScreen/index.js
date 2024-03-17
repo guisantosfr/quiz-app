@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 
 export default function TeacherScreen({ navigation }) {
   return (
-    <View style={globalStyles.container}>
+    <View style={[globalStyles.container, globalStyles.verticalCenter]}>
       <Button text="Cadastrar turma" onPress={() => navigation.navigate('New class')} />
       <Button text="Cadastrar questões" onPress={() => navigation.navigate('New quiz')} />
       <Button text="Ver turmas" onPress={() => navigation.navigate('Classes')} />

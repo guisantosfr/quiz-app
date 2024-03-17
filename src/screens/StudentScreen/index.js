@@ -13,7 +13,7 @@ export default function StudentScreen() {
   }
 
   return (
-    <View style={globalStyles.container}>
+    <View style={[globalStyles.container, globalStyles.verticalCenter]}>
       <Input onChangeText={setEmail} placeholder="Email" value={email} />
       <Input onChangeText={setQuizCode} placeholder="Código" value={quizCode} />
 
