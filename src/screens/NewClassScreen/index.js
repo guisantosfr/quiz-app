@@ -59,7 +59,7 @@ export default function NewClassScreen() {
   }
 
   return (
-    <View style={[globalStyles.container, globalStyles.verticalCenter]}>
+    <View style={globalStyles.container}>
       {
         notification?.length > 0 ? (
           !errorMessage ? (

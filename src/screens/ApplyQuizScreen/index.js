@@ -4,7 +4,7 @@ import globalStyles from '../../utils/globalStyles';
 import api from '../../services/api';
 import Button from '../../components/Button';
 import StepperButton from '../../components/StepperButton';
-import RadioButton from '../../components/RadioButton';
+import RadioButtons from '../../components/RadioButtons';
 
 export default function ApplyQuizScreen() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -16,7 +16,6 @@ export default function ApplyQuizScreen() {
 
   const [notification, setNotification] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
-
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -77,7 +76,7 @@ export default function ApplyQuizScreen() {
   switch(currentStep){
     case 0:
       return(
-        <View style={[globalStyles.container, styles.container]}>
+        <View style={globalStyles.container}>
           <Text style={styles.title}>Passo 1 de 3 - Selecionar questionário</Text>
           {
             notification?.length > 0 ? (
@@ -94,52 +93,61 @@ export default function ApplyQuizScreen() {
             !quizzes ?
             <ActivityIndicator size="large" color="#00d" />
             :
-            <RadioButton data={quizzes} onSelect={(value) => setSelectedQuiz(value)}/>
+            <RadioButtons data={quizzes} onSelect={(value) => setSelectedQuiz(value)}/>
           }
           <Button text="Próximo" onPress={nextStep}/>
         </View>
       );
     case 1:
       return(
-        <View style={[globalStyles.container, styles.container]}>
+        <View style={globalStyles.container}>
           <Text style={styles.title}>Passo 2 de 3 - Selecionar turma</Text>
 
           {
             !classes ?
             <ActivityIndicator size="large" color="#00d" />
             :
-            <RadioButton data={classes} onSelect={(value) => setSelectedClass(value)}/>
+            <RadioButtons data={classes} onSelect={(value) => setSelectedClass(value)}/>
           }
 
           <View style={styles.buttonArea}>
             <StepperButton text="Voltar" onPress={prevStep}/>
             <StepperButton text="Próximo" onPress={nextStep}/>
           </View>
+
         </View>
       );
     case 2:
       return(
         <View style={globalStyles.container}>
-          <Text>Passo 3 de 3 - Confirmar dados</Text>
+          <Text style={styles.title}>Passo 3 de 3 - Confirmar dados</Text>
+
+          <View style={ { flexGrow: 0, height: '70%', }}>
+            <Text>Questionário: {selectedQuiz}</Text>
+            <Text>Turma: {selectedClass}</Text>
+          </View>
 
           <View style={styles.buttonArea}>
             <StepperButton text="Voltar" onPress={prevStep}/>
-            <StepperButton text="Próximo" onPress={nextStep}/>
+            <StepperButton text="Aplicar" onPress={nextStep}/>
           </View>
         </View>
       );
   }
-
 }
 
 const styles = StyleSheet.create({
-  container: {
-    borderColor: 'red',
-    borderWidth: 1
+  title: {
+    marginTop: 75,
+    marginBottom: 40
   },
 
-  title: {
-    marginTop: 75
+  notification: {
+    color: '#0c0',
+  },
+  
+  error: {
+    color: '#c00'
   },
 
   buttonArea: {
@@ -147,12 +155,4 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row'
   },
-
-  notification: {
-    color: '#0c0',
-  },
-
-  error: {
-    color: '#c00'
-  }
 })
