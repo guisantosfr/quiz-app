@@ -8,6 +8,8 @@ export default function Input({ onChangeText, value, placeholder }) {
 
 const styles = StyleSheet.create({
   input: {
+    backgroundColor: '#9CA3AF',
+    color: '#F9FAFB',
     height: 50,
     margin: 20,
     borderWidth: 1,

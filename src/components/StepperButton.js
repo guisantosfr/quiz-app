@@ -10,7 +10,7 @@ export default function StepperButton({ text, onPress }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#00d',
+    backgroundColor: '#699CF4',
     marginHorizontal: 24,
     marginVertical: 12,
     height: 50,

@@ -10,7 +10,7 @@ export default function Button({ text, onPress }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#00d',
+    backgroundColor: '#699CF4',
     marginVertical: 30,
     height: 50,
     width: Dimensions.get('window').width * 0.6,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: '#ddd',
+    color: '#D8D8D8',
     fontSize: 18
   }
 })

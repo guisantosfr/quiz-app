@@ -1,8 +1,8 @@
-import { ActivityIndicator, Text, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import globalStyles from '../../utils/globalStyles';
-import SecondaryButton from '../../components/SecondaryButton';
+import CardList from '../../components/CardList';
 
 export default function ClassesScreen() {
   const [classes, setClasses] = useState(null);
@@ -21,25 +21,28 @@ export default function ClassesScreen() {
   }, []);
 
   return (
-    <View style={globalStyles.container}>
+    <SafeAreaView style={globalStyles.container}>
       {
         !classes ?
           <ActivityIndicator size="large" color="#00d" />
           :
           (
             classes.length === 0 ?
-              <Text>Não há turmas cadastradas</Text>
+              <Text style={globalStyles.text}>Não há turmas cadastradas</Text>
               :
               <>
-                <Text>Turmas cadastradas</Text>
-                {
-                  classes.map((item, index) => (
-                    <SecondaryButton key={index} text={item.name} />
-                  ))
-                }
+                <Text style={[globalStyles.text, styles.title]}>Turmas cadastradas</Text>
+                <CardList data={classes}/>
               </>
           )
       }
-    </View>
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  title: {
+    marginTop: 75,
+    marginBottom: 40
+  }
+})

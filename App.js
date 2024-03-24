@@ -9,11 +9,15 @@ import NewQuizScreen from './src/screens/NewQuizScreen';
 import ClassesScreen from './src/screens/ClassesScreen';
 import QuizzesScreen from './src/screens/QuizzesScreen';
 import ApplyQuizScreen from './src/screens/ApplyQuizScreen';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <>
+    <StatusBar style='light'/>
+
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home' screenOptions={{
         headerShown: false
@@ -28,5 +32,6 @@ export default function App() {
         <Stack.Screen name='Apply' component={ApplyQuizScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useEffect, useState } from 'react';
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
@@ -60,7 +60,7 @@ export default function NewQuizScreen() {
   }
 
   return (
-    <View style={globalStyles.container}>
+    <SafeAreaView style={globalStyles.container}>
       {
         notification?.length > 0 ? (
           !errorMessage ? (
@@ -74,10 +74,10 @@ export default function NewQuizScreen() {
       }
 
       <Input onChangeText={setQuizName} value={quizName} placeholder="Nome do questionário" />
-      <Text>{!fileName ? 'Planilha não lida' : fileName}</Text>
+      <Text style={globalStyles.text}>{!fileName ? 'Planilha não lida' : fileName}</Text>
       <Button text="Ler planilha de questões" onPress={handleUpload} />
       <Button text="Salvar Questionário" onPress={saveQuiz} />
-    </View>
+    </SafeAreaView>
   )
 }
 

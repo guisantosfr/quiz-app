@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, StyleSheet, Text } from 'react-native';
 import globalStyles from '../../utils/globalStyles';
 import api from '../../services/api';
 import Button from '../../components/Button';
@@ -51,14 +51,15 @@ export default function ApplyQuizScreen() {
   }, [notification])
 
   const nextStep = () => {
+    
     if(currentStep === 2) return;
-
+    
     if(currentStep === 0 && !selectedQuiz){
       setNotification('Selecione um questionário para avançar');
       setErrorMessage(true);
       return;
     } 
-
+    
     if(currentStep === 1 && !selectedClass){
       setNotification('Selecione uma turma para avançar');
       setErrorMessage(true);
@@ -73,11 +74,15 @@ export default function ApplyQuizScreen() {
     setCurrentStep(prevStep => prevStep - 1);
   };
 
+  const applyQuiz = () => {
+    console.log('Questionário aplicado');
+  };
+
   switch(currentStep){
     case 0:
       return(
-        <View style={globalStyles.container}>
-          <Text style={styles.title}>Passo 1 de 3 - Selecionar questionário</Text>
+        <SafeAreaView style={globalStyles.container}>
+          <Text style={[styles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
           {
             notification?.length > 0 ? (
               !errorMessage ? (
@@ -96,13 +101,23 @@ export default function ApplyQuizScreen() {
             <RadioButtons data={quizzes} onSelect={(value) => setSelectedQuiz(value)}/>
           }
           <Button text="Próximo" onPress={nextStep}/>
-        </View>
+        </SafeAreaView>
       );
     case 1:
       return(
-        <View style={globalStyles.container}>
-          <Text style={styles.title}>Passo 2 de 3 - Selecionar turma</Text>
-
+        <SafeAreaView style={globalStyles.container}>
+          <Text style={[styles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
+          {
+            notification?.length > 0 ? (
+              !errorMessage ? (
+                <Text style={styles.notification}>{notification}</Text>
+              ) : (
+                <Text style={styles.error}>{notification}</Text>
+              )
+            ) : (
+              <></>
+            )
+          }
           {
             !classes ?
             <ActivityIndicator size="large" color="#00d" />
@@ -115,23 +130,23 @@ export default function ApplyQuizScreen() {
             <StepperButton text="Próximo" onPress={nextStep}/>
           </View>
 
-        </View>
+        </SafeAreaView>
       );
     case 2:
       return(
-        <View style={globalStyles.container}>
-          <Text style={styles.title}>Passo 3 de 3 - Confirmar dados</Text>
+        <SafeAreaView style={globalStyles.container}>
+          <Text style={[styles.title, globalStyles.text]}>Passo 3 de 3 - Confirmar dados</Text>
 
           <View style={ { flexGrow: 0, height: '70%', }}>
-            <Text>Questionário: {selectedQuiz}</Text>
-            <Text>Turma: {selectedClass}</Text>
+            <Text style={globalStyles.text}>Questionário: {selectedQuiz}</Text>
+            <Text style={globalStyles.text}>Turma: {selectedClass}</Text>
           </View>
 
           <View style={styles.buttonArea}>
             <StepperButton text="Voltar" onPress={prevStep}/>
-            <StepperButton text="Aplicar" onPress={nextStep}/>
+            <StepperButton text="Aplicar" onPress={applyQuiz}/>
           </View>
-        </View>
+        </SafeAreaView>
       );
   }
 }
