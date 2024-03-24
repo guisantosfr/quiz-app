@@ -1,4 +1,4 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, Text } from 'react-native';
 import { useState } from 'react';
 
 export default function RadioButtons({ data, onSelect }) {
@@ -17,7 +17,6 @@ export default function RadioButtons({ data, onSelect }) {
     </Pressable>
   )
   
-
   return (
       <FlatList
         data={data}

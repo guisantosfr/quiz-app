@@ -1,5 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 import HomeScreen from './src/screens/HomeScreen';
 import TeacherScreen from './src/screens/TeacherScreen';
@@ -9,13 +11,12 @@ import NewQuizScreen from './src/screens/NewQuizScreen';
 import ClassesScreen from './src/screens/ClassesScreen';
 import QuizzesScreen from './src/screens/QuizzesScreen';
 import ApplyQuizScreen from './src/screens/ApplyQuizScreen';
-import { StatusBar } from 'expo-status-bar';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <>
+    <RootSiblingParent>
     <StatusBar style='light'/>
 
     <NavigationContainer>
@@ -32,6 +33,6 @@ export default function App() {
         <Stack.Screen name='Apply' component={ApplyQuizScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-    </>
+    </RootSiblingParent>
   );
 }

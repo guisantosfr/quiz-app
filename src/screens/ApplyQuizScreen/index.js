@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Toast from 'react-native-root-toast';
+
 import globalStyles from '../../utils/globalStyles';
 import api from '../../services/api';
 import Button from '../../components/Button';
@@ -13,9 +15,6 @@ export default function ApplyQuizScreen() {
 
   const [classes, setClasses] = useState(null);
   const [quizzes, setQuizzes] = useState(null);
-
-  const [notification, setNotification] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -43,26 +42,29 @@ export default function ApplyQuizScreen() {
     fetchClasses();
   }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setNotification('')
-      setErrorMessage(false)
-    }, 3000)
-  }, [notification])
-
   const nextStep = () => {
     
     if(currentStep === 2) return;
     
     if(currentStep === 0 && !selectedQuiz){
-      setNotification('Selecione um questionário para avançar');
-      setErrorMessage(true);
+      Toast.show('Selecione um questionário para avançar', {
+        duration: 3000,
+        position: 75,
+        animation: true,
+        backgroundColor: '#FF445D'
+      });
+  
       return;
     } 
     
     if(currentStep === 1 && !selectedClass){
-      setNotification('Selecione uma turma para avançar');
-      setErrorMessage(true);
+      Toast.show('Selecione uma turma para avançar', {
+        duration: 3000,
+        position: 75,
+        animation: true,
+        backgroundColor: '#FF445D'
+      });
+  
       return;
     } 
 
@@ -71,6 +73,11 @@ export default function ApplyQuizScreen() {
 
   const prevStep = () => {
     if(currentStep === 0) return;
+
+    if(currentStep === 1) setSelectedQuiz(null);
+
+    if(currentStep === 2) setSelectedClass(null);
+
     setCurrentStep(prevStep => prevStep - 1);
   };
 
@@ -84,17 +91,6 @@ export default function ApplyQuizScreen() {
         <SafeAreaView style={globalStyles.container}>
           <Text style={[styles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
           {
-            notification?.length > 0 ? (
-              !errorMessage ? (
-                <Text style={styles.notification}>{notification}</Text>
-              ) : (
-                <Text style={styles.error}>{notification}</Text>
-              )
-            ) : (
-              <></>
-            )
-          }
-          {
             !quizzes ?
             <ActivityIndicator size="large" color="#00d" />
             :
@@ -107,17 +103,6 @@ export default function ApplyQuizScreen() {
       return(
         <SafeAreaView style={globalStyles.container}>
           <Text style={[styles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
-          {
-            notification?.length > 0 ? (
-              !errorMessage ? (
-                <Text style={styles.notification}>{notification}</Text>
-              ) : (
-                <Text style={styles.error}>{notification}</Text>
-              )
-            ) : (
-              <></>
-            )
-          }
           {
             !classes ?
             <ActivityIndicator size="large" color="#00d" />

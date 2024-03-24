@@ -1,5 +1,7 @@
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import { useEffect, useState } from 'react';
+import { SafeAreaView, Text } from 'react-native';
+import { useState } from 'react';
+import Toast from 'react-native-root-toast';
+
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
 import globalStyles from '../../utils/globalStyles';
@@ -10,16 +12,6 @@ export default function NewQuizScreen() {
   const [quizName, setQuizName] = useState('');
   const [quizData, setQuizData] = useState(null);
   const [fileName, setFileName] = useState(null);
-
-  const [notification, setNotification] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setNotification('')
-      setErrorMessage(false)
-    }, 3000)
-  }, [notification])
 
   const handleUpload = async () => {
     const result = await pickDocumentAsync();
@@ -32,8 +24,13 @@ export default function NewQuizScreen() {
 
   const saveQuiz = async () => {
     if (!quizName || !quizData) {
-      setNotification('Nome do questionário e planilha de questões são obrigatórios');
-      setErrorMessage(true);
+      Toast.show('Nome do questionário e planilha de questões são obrigatórios', {
+        duration: 3000,
+        position: 75,
+        animation: true,
+        backgroundColor: '#FF445D'
+      });
+
       return;
     }
 
@@ -48,7 +45,12 @@ export default function NewQuizScreen() {
       name: quizName,
       questions: savedQuestions
     }).then(function (response) {
-      setNotification(`O questionário ${quizName} foi criado com sucesso`);
+      Toast.show('Questionário criado com sucesso', {
+        duration: 3000,
+        position: 75,
+        animation: true,
+        backgroundColor: '#2CDE80'
+      });
 
       setQuizName('');
       setQuizData(null);
@@ -61,18 +63,6 @@ export default function NewQuizScreen() {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      {
-        notification?.length > 0 ? (
-          !errorMessage ? (
-            <Text style={styles.notification}>{notification}</Text>
-          ) : (
-            <Text style={styles.error}>{notification}</Text>
-          )
-        ) : (
-          <></>
-        )
-      }
-
       <Input onChangeText={setQuizName} value={quizName} placeholder="Nome do questionário" />
       <Text style={globalStyles.text}>{!fileName ? 'Planilha não lida' : fileName}</Text>
       <Button text="Ler planilha de questões" onPress={handleUpload} />
@@ -80,17 +70,3 @@ export default function NewQuizScreen() {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 20
-  },
-
-  notification: {
-    color: '#0c0'
-  },
-
-  error: {
-    color: '#c00'
-  }
-})

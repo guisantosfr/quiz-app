@@ -1,5 +1,7 @@
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import { useEffect, useState } from 'react';
+import { SafeAreaView, Text } from 'react-native';
+import { useState } from 'react';
+import Toast from 'react-native-root-toast';
+
 import { pickDocumentAsync } from '../../helpers/pickDocument';
 import api from '../../services/api';
 import globalStyles from '../../utils/globalStyles';
@@ -10,16 +12,6 @@ export default function NewClassScreen() {
   const [className, setClassName] = useState('');
   const [students, setStudents] = useState(null);
   const [fileName, setFileName] = useState(null);
-
-  const [notification, setNotification] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setNotification('')
-      setErrorMessage(false)
-    }, 3000)
-  }, [notification])
 
   const handleUpload = async () => {
     const result = await pickDocumentAsync();
@@ -32,8 +24,13 @@ export default function NewClassScreen() {
 
   const saveClass = async () => {
     if (!className || !students) {
-      setNotification('Nome da turma e planilha de alunos são obrigatórios');
-      setErrorMessage(true);
+      Toast.show('Nome da turma e planilha de alunos são obrigatórios', {
+        duration: 3000,
+        position: 75,
+        animation: true,
+        backgroundColor: '#FF445D'
+      });
+
       return;
     }
     
@@ -47,7 +44,12 @@ export default function NewClassScreen() {
       name: className,
       students: savedStudents
     }).then(function (response) {
-      setNotification(`A turma ${className} foi criada com sucesso`);
+      Toast.show('Turma criada com sucesso', {
+        duration: 3000,
+        position: 75,
+        animation: true,
+        backgroundColor: '#2CDE80'
+      })
 
       setClassName('');
       setStudents(null);
@@ -60,18 +62,6 @@ export default function NewClassScreen() {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      {
-        notification?.length > 0 ? (
-          !errorMessage ? (
-            <Text style={styles.notification}>{notification}</Text>
-          ) : (
-            <Text style={styles.error}>{notification}</Text>
-          )
-        ) : (
-          <></>
-        )
-      }
-
       <Input onChangeText={setClassName} value={className} placeholder="Nome da turma" />
       <Text style={globalStyles.text}>{!fileName ? 'Planilha não lida' : fileName}</Text>
       <Button text="Ler planilha de alunos" onPress={handleUpload} />
@@ -79,17 +69,3 @@ export default function NewClassScreen() {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 20
-  },
-
-  notification: {
-    color: '#0c0'
-  },
-
-  error: {
-    color: '#c00'
-  }
-})
