@@ -111,7 +111,7 @@ export default function ApplyQuizScreen() {
           }
 
           <View style={styles.buttonArea}>
-            <StepperButton text="Voltar" onPress={prevStep}/>
+            <StepperButton text="Voltar" onPress={prevStep} secondary/>
             <StepperButton text="Próximo" onPress={nextStep}/>
           </View>
 
@@ -128,7 +128,7 @@ export default function ApplyQuizScreen() {
           </View>
 
           <View style={styles.buttonArea}>
-            <StepperButton text="Voltar" onPress={prevStep}/>
+            <StepperButton text="Voltar" onPress={prevStep} secondary/>
             <StepperButton text="Aplicar" onPress={applyQuiz}/>
           </View>
         </SafeAreaView>
