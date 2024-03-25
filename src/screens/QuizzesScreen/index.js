@@ -24,7 +24,7 @@ export default function NewClassScreen() {
     <SafeAreaView style={globalStyles.container}>
       {
         !quizzes ?
-          <ActivityIndicator size="large" color="#00d" />
+          <ActivityIndicator size="large" color="#699CF4" />
           :
           (
             quizzes.length === 0 ?

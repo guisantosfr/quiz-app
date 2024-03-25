@@ -85,55 +85,73 @@ export default function ApplyQuizScreen() {
     console.log('Questionário aplicado');
   };
 
-  switch(currentStep){
-    case 0:
-      return(
-        <SafeAreaView style={globalStyles.container}>
-          <Text style={[styles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
-          {
-            !quizzes ?
-            <ActivityIndicator size="large" color="#00d" />
-            :
-            <RadioButtons data={quizzes} onSelect={(value) => setSelectedQuiz(value)}/>
-          }
-          <Button text="Próximo" onPress={nextStep}/>
-        </SafeAreaView>
-      );
-    case 1:
-      return(
-        <SafeAreaView style={globalStyles.container}>
-          <Text style={[styles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
-          {
-            !classes ?
-            <ActivityIndicator size="large" color="#00d" />
-            :
-            <RadioButtons data={classes} onSelect={(value) => setSelectedClass(value)}/>
-          }
+  const renderStep = () => {
+    switch(currentStep){
+      case 0:
+        return(
+          <>
+            <Text style={[styles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
+            {
+              !quizzes ?
+              <ActivityIndicator size="large" color="#699CF4" />
+              :
+              <RadioButtons data={quizzes} onSelect={(value) => setSelectedQuiz(value)}/>
+            }
+            <Button text="Próximo" onPress={nextStep}/>
+          </>
+        );
+      case 1:
+        return(
+          <>
+            <Text style={[styles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
+            {
+              !classes ?
+              <ActivityIndicator size="large" color="#699CF4" />
+              :
+              <RadioButtons data={classes} onSelect={(value) => setSelectedClass(value)}/>
+            }
 
-          <View style={styles.buttonArea}>
-            <StepperButton text="Voltar" onPress={prevStep} secondary/>
-            <StepperButton text="Próximo" onPress={nextStep}/>
-          </View>
+            <View style={styles.buttonArea}>
+              <StepperButton text="Voltar" onPress={prevStep} secondary/>
+              <StepperButton text="Próximo" onPress={nextStep}/>
+            </View>
 
-        </SafeAreaView>
-      );
-    case 2:
-      return(
-        <SafeAreaView style={globalStyles.container}>
-          <Text style={[styles.title, globalStyles.text]}>Passo 3 de 3 - Confirmar dados</Text>
+          </>
+        );
+      case 2:
+        return(
+          <>
+            <Text style={[styles.title, globalStyles.text]}>Passo 3 de 3 - Confirmar dados</Text>
 
-          <View style={ { flexGrow: 0, height: '70%', }}>
-            <Text style={globalStyles.text}>Questionário: {selectedQuiz}</Text>
-            <Text style={globalStyles.text}>Turma: {selectedClass}</Text>
-          </View>
+            <View style={ { flexGrow: 0, height: '70%', }}>
+              <Text style={globalStyles.text}>Questionário: {selectedQuiz}</Text>
+              <Text style={globalStyles.text}>Turma: {selectedClass}</Text>
+            </View>
 
-          <View style={styles.buttonArea}>
-            <StepperButton text="Voltar" onPress={prevStep} secondary/>
-            <StepperButton text="Aplicar" onPress={applyQuiz}/>
-          </View>
-        </SafeAreaView>
-      );
+            <View style={styles.buttonArea}>
+              <StepperButton text="Voltar" onPress={prevStep} secondary/>
+              <StepperButton text="Aplicar" onPress={applyQuiz}/>
+            </View>
+          </>
+        );
+    }
   }
+
+  return (
+    <SafeAreaView style={globalStyles.container}>
+    {
+      !classes || !quizzes ?
+      <ActivityIndicator size="large" color="#699CF4" />
+      :
+      (
+        classes.length === 0 || quizzes.length === 0 ?
+          <Text>Não há turmas ou questionários cadastrados</Text>
+          :
+          renderStep()
+      )
+    }
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

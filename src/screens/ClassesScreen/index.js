@@ -24,7 +24,7 @@ export default function ClassesScreen() {
     <SafeAreaView style={globalStyles.container}>
       {
         !classes ?
-          <ActivityIndicator size="large" color="#00d" />
+          <ActivityIndicator size="large" color="#699CF4" />
           :
           (
             classes.length === 0 ?
