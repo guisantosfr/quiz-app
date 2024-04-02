@@ -33,7 +33,7 @@ export default function ApplyQuizScreen() {
     const fetchClasses = async () => {
       try {
         const result = await api.get('/classes');
-        setClasses(result.data)
+        setClasses(result.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

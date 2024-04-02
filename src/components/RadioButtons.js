@@ -11,8 +11,8 @@ export default function RadioButtons({ data, onSelect }) {
 
   const renderItem = ({ item }) => (
     <Pressable 
-      style={[styles.option, item.name === selectedOption ? styles.selected : styles.unselected]}
-      onPress={() => selectHandler(item.name)}>
+      style={[styles.option, item._id === selectedOption ? styles.selected : styles.unselected]}
+      onPress={() => selectHandler(item._id)}>
         <Text style={styles.text}>{item.name}</Text>
     </Pressable>
   )
