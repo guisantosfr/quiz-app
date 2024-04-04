@@ -1,6 +1,6 @@
 import { Dimensions, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 
-export default function RadioButtons({ data }) {
+export default function CardList({ data }) {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Text>{item.name}</Text>
