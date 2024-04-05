@@ -1,10 +1,9 @@
-import { ActivityIndicator, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import globalStyles from '../../utils/globalStyles';
-import CardList from '../../components/CardList';
 
-export default function ClassesScreen() {
+export default function ClassesScreen({ navigation }) {
   const [classes, setClasses] = useState(null);
 
   useEffect(() => {
@@ -20,6 +19,12 @@ export default function ClassesScreen() {
     fetchData();
   }, []);
 
+  const renderItem = ({ item }) => (
+    <Pressable style={styles.card} onPress={() => navigation.navigate('Class Detail', { id: item._id})}>
+      <Text>{item.name}</Text>
+    </Pressable>
+  )
+
   return (
     <SafeAreaView style={globalStyles.container}>
       {
@@ -32,7 +37,14 @@ export default function ClassesScreen() {
               :
               <>
                 <Text style={[globalStyles.text, styles.title]}>Turmas cadastradas</Text>
-                <CardList data={classes}/>
+                <FlatList
+                  data={classes}
+                  columnWrapperStyle={{flexWrap: 'wrap'}}
+                  keyExtractor={item => item._id}
+                  renderItem={renderItem}
+                  numColumns={2}
+                  style={styles.list}
+                />
               </>
           )
       }
@@ -44,5 +56,23 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 75,
     marginBottom: 40
+  },
+
+  list: {
+    flexGrow: 0,
+    height: '70%',  
+  },
+
+  card: {
+    alignItems: 'center',
+    backgroundColor: '#979797',
+    padding: 20,
+    borderRadius: 10,
+    width: Dimensions.get('window').width * 0.6,
+    marginVertical: 10,
+
+    flexBasis: '40%',
+    marginBottom: 20,
+    marginHorizontal: 5
   }
 })

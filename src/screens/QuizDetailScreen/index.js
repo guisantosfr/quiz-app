@@ -1,0 +1,35 @@
+import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import globalStyles from '../../utils/globalStyles';
+import { useEffect, useState } from 'react';
+import api from '../../services/api';
+
+export default function QuizDetailScreen() {
+  const route = useRoute();
+  const { id } = route.params;
+  const [selectedQuiz, setSelectedQuiz] = useState(null);
+
+  useEffect(() => {
+    const getQuiz = async() => {
+      const result = await api.get(`/quizzes/${id}`);
+      setSelectedQuiz(result.data);
+    }
+
+    getQuiz();
+  }, []);
+
+  return (
+    <SafeAreaView style={globalStyles.container}>
+    {
+      !selectedQuiz ?
+      <ActivityIndicator size="large" color="#699CF4" />
+        :
+        (
+          <>
+            <Text style={globalStyles.text}>Turma selecionada: { selectedQuiz.name }</Text>
+          </>
+        )
+    }
+  </SafeAreaView>
+  )
+}
