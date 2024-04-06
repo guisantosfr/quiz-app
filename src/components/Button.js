@@ -1,9 +1,10 @@
 import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
+import globalStyles from '../utils/globalStyles';
 
 export default function Button({ text, onPress }) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={globalStyles.buttonText}>{text}</Text>
     </TouchableOpacity>
   )
 }
@@ -18,10 +19,5 @@ const styles = StyleSheet.create({
 
     justifyContent: 'center',
     alignItems: 'center'
-  },
-
-  buttonText: {
-    color: '#D8D8D8',
-    fontSize: 18
   }
 })

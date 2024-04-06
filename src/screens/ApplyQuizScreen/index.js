@@ -116,7 +116,7 @@ export default function ApplyQuizScreen() {
       case 0:
         return(
           <>
-            <Text style={[styles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
+            <Text style={[globalStyles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
             {
               !quizzes ?
               <ActivityIndicator size="large" color="#699CF4" />
@@ -129,7 +129,7 @@ export default function ApplyQuizScreen() {
       case 1:
         return(
           <>
-            <Text style={[styles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
+            <Text style={[globalStyles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
             {
               !classes ?
               <ActivityIndicator size="large" color="#699CF4" />
@@ -152,7 +152,7 @@ export default function ApplyQuizScreen() {
             <ActivityIndicator size="large" color="#699CF4" /> :
 
           <>
-            <Text style={[styles.title, globalStyles.text]}>Passo 3 de 3 - Confirmar dados</Text>
+            <Text style={[globalStyles.title, globalStyles.text]}>Passo 3 de 3 - Confirmar dados</Text>
 
             <View style={ { flexGrow: 0, height: '70%', }}>
               <Text style={globalStyles.text}>Questionário: {quizToApply.name}</Text>
@@ -188,11 +188,6 @@ export default function ApplyQuizScreen() {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 75,
-    marginBottom: 40
-  },
-
   notification: {
     color: '#0c0',
   },

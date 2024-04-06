@@ -1,5 +1,6 @@
 import { FlatList, Pressable, StyleSheet, Text } from 'react-native';
 import { useState } from 'react';
+import globalStyles from '../utils/globalStyles';
 
 export default function RadioButtons({ data, onSelect }) {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -24,18 +25,13 @@ export default function RadioButtons({ data, onSelect }) {
         keyExtractor={item => item._id}
         renderItem={renderItem}
         numColumns={2}
-        style={styles.list}
+        style={globalStyles.list}
       />
    
   );
 }
 
-const styles = StyleSheet.create({
-  list: {
-    flexGrow: 0,
-    height: '70%',  
-  },
- 
+const styles = StyleSheet.create({ 
   option: {
     flexBasis: '40%',
     padding: 30,
