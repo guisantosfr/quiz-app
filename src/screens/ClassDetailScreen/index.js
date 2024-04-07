@@ -26,7 +26,9 @@ export default function ClassDetailScreen() {
           :
           (
             <>
-              <Text style={globalStyles.text}>Turma selecionada: { selectedClass.name }</Text>
+              <Text style={[globalStyles.text, globalStyles.title]}>Detalhes da turma</Text>
+              <Text style={globalStyles.text}>Nome: { selectedClass.name }</Text>
+              <Text style={globalStyles.text}>Alunos: { selectedClass.students.length }</Text>
             </>
           )
       }

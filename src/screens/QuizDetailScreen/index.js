@@ -26,7 +26,9 @@ export default function QuizDetailScreen() {
         :
         (
           <>
-            <Text style={globalStyles.text}>Turma selecionada: { selectedQuiz.name }</Text>
+            <Text style={[globalStyles.text, globalStyles.title]}>Detalhes do questionário</Text>
+            <Text style={globalStyles.text}>Nome: { selectedQuiz.name }</Text>
+            <Text style={globalStyles.text}>Questões: { selectedQuiz.questions.length }</Text>
           </>
         )
     }
