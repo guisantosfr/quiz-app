@@ -3,6 +3,7 @@ import { useRoute } from '@react-navigation/native';
 import globalStyles from '../../utils/globalStyles';
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
+import TableView from '../../components/TableView';
 
 export default function QuizDetailScreen() {
   const route = useRoute();
@@ -29,6 +30,8 @@ export default function QuizDetailScreen() {
             <Text style={[globalStyles.text, globalStyles.title]}>Detalhes do questionário</Text>
             <Text style={globalStyles.text}>Nome: { selectedQuiz.name }</Text>
             <Text style={globalStyles.text}>Questões: { selectedQuiz.questions.length }</Text>
+
+            <TableView data={selectedQuiz.questions}/>
           </>
         )
     }
