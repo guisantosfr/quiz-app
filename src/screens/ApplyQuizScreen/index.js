@@ -108,7 +108,12 @@ export default function ApplyQuizScreen() {
   };
 
   const applyQuiz = () => {
-    console.log('Questionário aplicado');
+    Toast.show('Questionário aplicado', {
+      duration: 3000,
+      position: 75,
+      animation: true,
+      backgroundColor: '#2CDE80'
+    })
   };
 
   const renderStep = () => {
