@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.75,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#FFF',
+    backgroundColor: '#DDD',
     shadowOffset: {
       width: 1,
       height: 1

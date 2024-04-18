@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <RootSiblingParent>
-    <StatusBar style='light'/>
+    <StatusBar style='dark'/>
 
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home' screenOptions={{

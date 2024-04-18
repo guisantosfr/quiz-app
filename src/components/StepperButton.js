@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 
   secondary: {
-    backgroundColor: '#111827',
+    backgroundColor: '#AAA',
     borderColor: '#DDD',
     borderWidth: 2
   }
