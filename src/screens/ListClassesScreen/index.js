@@ -17,7 +17,7 @@ export default function ListClassesScreen({ navigation }) {
     }
 
     fetchData();
-  }, []);
+  }, [classes]);
 
   const renderItem = ({ item }) => (
     <Pressable style={globalStyles.card} onPress={() => navigation.navigate('Class Detail', { id: item._id})}>

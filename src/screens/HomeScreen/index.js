@@ -7,19 +7,15 @@ import globalStyles from '../../utils/globalStyles';
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={globalStyles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate('Teacher')}>
-        <Card>
+      <Card onPress={() => navigation.navigate('Teacher')}>
           <Icon name='chalkboard-teacher'/>
           <Text>Sou professor</Text>
-        </Card>
-      </TouchableOpacity>
+      </Card>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Student')}>
-        <Card>
+      <Card onPress={() => navigation.navigate('Student')}>
         <Icon name='book'/>
-          <Text>Sou aluno</Text>
-        </Card>
-      </TouchableOpacity>
+        <Text>Sou aluno</Text>
+      </Card>
     </SafeAreaView>
   )
 }

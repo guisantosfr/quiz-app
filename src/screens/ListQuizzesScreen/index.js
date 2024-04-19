@@ -17,7 +17,7 @@ export default function ListQuizzesScreen({ navigation }) {
     }
 
     fetchData();
-  }, []);
+  }, [quizzes]);
 
   const renderItem = ({ item }) => (
     <Pressable style={globalStyles.card} onPress={() => navigation.navigate('Quiz Detail', { id: item._id})}>

@@ -9,16 +9,15 @@ export default function TableView({ data }){
  
     return (
         <Table borderStyle={styles.border} style={styles.table}>
-            <Row data={tableHeader} style={styles.head} textStyle={styles.headText}/>
+            <Row data={tableHeader} style={styles.head} />
             <Rows data={tableBody} textStyle={styles.text} />
         </Table>
     )
 }
 
 const styles = StyleSheet.create({
-    table: { width: '92.5%', marginTop: 20 },
-    border: { borderWidth: 2, borderColor: 'teal' },
+    table: { width: '92.5%', marginTop: 20},
+    border: { borderWidth: 1, borderColor: '#111' },
     head: { height: 40, backgroundColor: '#699CF4' },
-    headText: { fontWeight: 'bold', textAlign: 'center', color: '#D8D8D8' },
-    text: { margin: 6, color: '#D8D8D8' },
+    text: { margin: 6, color: '#111' },
 })

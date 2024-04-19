@@ -1,12 +1,12 @@
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
 
-export default function Card({ children }) {
+export default function Card({ onPress, children }) {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPress}>
       <View style={styles.cardContent}>
         { children }
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
 
     width: '75%',
     padding: 20
