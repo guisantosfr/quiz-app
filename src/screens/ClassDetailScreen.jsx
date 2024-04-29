@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
-import globalStyles from '../../utils/globalStyles';
-import api from '../../services/api';
-import TableView from '../../components/TableView';
+import globalStyles from '../utils/globalStyles';
+import api from '../services/api';
+import TableView from '../components/TableView';
 
 export default function ClassDetailScreen() {
   const route = useRoute();

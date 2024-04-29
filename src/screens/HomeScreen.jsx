@@ -1,8 +1,8 @@
 import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
-import Card from '../../components/Card';
-import globalStyles from '../../utils/globalStyles';
+import Card from '../components/Card';
+import globalStyles from '../utils/globalStyles';
 
 export default function HomeScreen({ navigation }) {
   return (

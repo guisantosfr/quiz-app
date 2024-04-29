@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Toast from 'react-native-root-toast';
 
-import globalStyles from '../../utils/globalStyles';
-import api from '../../services/api';
-import Button from '../../components/Button';
-import StepperButton from '../../components/StepperButton';
-import RadioButtons from '../../components/RadioButtons';
+import globalStyles from '../utils/globalStyles';
+import api from '../services/api';
+import Button from '../components/Button';
+import StepperButton from '../components/StepperButton';
+import RadioButtons from '../components/RadioButtons';
 
 export default function ApplyQuizScreen() {
   const [currentStep, setCurrentStep] = useState(0);

@@ -1,6 +1,6 @@
-import ClassesScreen from '../ClassesScreen';
-import QuizzesScreen from '../QuizzesScreen';
-import ApplyQuizScreen from '../ApplyQuizScreen';
+import ClassesScreen from './ClassesScreen';
+import QuizzesScreen from './QuizzesScreen';
+import ApplyQuizScreen from './ApplyQuizScreen';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';

@@ -2,11 +2,11 @@ import { SafeAreaView, Text } from 'react-native';
 import { useState } from 'react';
 import Toast from 'react-native-root-toast';
 
-import { pickDocumentAsync } from '../../helpers/pickDocument';
-import api from '../../services/api';
-import globalStyles from '../../utils/globalStyles';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import { pickDocumentAsync } from '../helpers/pickDocument';
+import api from '../services/api';
+import globalStyles from '../utils/globalStyles';
+import Button from '../components/Button';
+import Input from '../components/Input';
 
 export default function NewQuizScreen() {
   const [quizName, setQuizName] = useState('');

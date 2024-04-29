@@ -1,8 +1,8 @@
 import { SafeAreaView } from 'react-native';
 import { useState } from 'react';
-import globalStyles from '../../utils/globalStyles';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import globalStyles from '../utils/globalStyles';
+import Input from '../components/Input';
+import Button from '../components/Button';
 
 export default function StudentScreen() {
   const [email, setEmail] = useState('');

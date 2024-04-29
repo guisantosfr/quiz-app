@@ -1,9 +1,9 @@
 import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
-import globalStyles from '../../utils/globalStyles';
+import globalStyles from '../utils/globalStyles';
 import { useEffect, useState } from 'react';
-import api from '../../services/api';
-import TableView from '../../components/TableView';
+import api from '../services/api';
+import TableView from '../components/TableView';
 
 export default function QuizDetailScreen() {
   const route = useRoute();
