@@ -1,17 +1,18 @@
 import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
-import globalStyles from '../utils/globalStyles';
+
+import theme from '../theme';
 
 export default function Button({ text, onPress }) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={globalStyles.buttonText}>{text}</Text>
+      <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#11C',
+    backgroundColor: theme.colors.darkBlue,
     marginVertical: 30,
     height: 50,
     width: Dimensions.get('window').width * 0.6,
@@ -19,5 +20,10 @@ const styles = StyleSheet.create({
 
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
+
+  buttonText: {
+    color: theme.colors.background,
+    fontSize: 18
+  },
 })

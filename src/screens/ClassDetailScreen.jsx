@@ -3,6 +3,7 @@ import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 import globalStyles from '../utils/globalStyles';
+import theme from '../theme';
 import api from '../services/api';
 import TableView from '../components/TableView';
 
@@ -23,7 +24,7 @@ export default function ClassDetailScreen() {
     <SafeAreaView style={globalStyles.container}>
       {
         !selectedClass ?
-        <ActivityIndicator size="large" color="#699CF4" />
+        <ActivityIndicator size="large" color={theme.colors.lightBlue} />
           :
           (
             <>

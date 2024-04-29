@@ -1,6 +1,8 @@
 import {  StyleSheet } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
 
+import theme from '../theme';
+
 export default function TableView({ data }){
     const { __v, _id, ...rest} = data[0];
     const tableHeader = Object.keys(rest);
@@ -17,7 +19,7 @@ export default function TableView({ data }){
 
 const styles = StyleSheet.create({
     table: { width: '92.5%', marginTop: 20},
-    border: { borderWidth: 1, borderColor: '#111' },
-    head: { height: 40, backgroundColor: '#699CF4' },
-    text: { margin: 6, color: '#111' },
+    border: { borderWidth: 1, borderColor: theme.colors.black },
+    head: { height: 40, backgroundColor: theme.colors.lightBlue },
+    text: { margin: 6, color: theme.colors.black },
 })

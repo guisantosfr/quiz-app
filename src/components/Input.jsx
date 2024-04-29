@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet, TextInput } from "react-native";
+import theme from '../theme';
 
 export default function Input({ onChangeText, value, placeholder }) {
   return (
@@ -8,7 +9,7 @@ export default function Input({ onChangeText, value, placeholder }) {
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: '#EEE',
+    backgroundColor: theme.colors.background,
     height: 50,
     margin: 20,
     borderWidth: 1,

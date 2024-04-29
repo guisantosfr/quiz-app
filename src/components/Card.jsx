@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
+import theme from '../theme';
 
 export default function Card({ onPress, children }) {
   return (
@@ -15,14 +16,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.75,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#DDD',
-    shadowOffset: {
-      width: 1,
-      height: 1
-    },
-    shadowColor: '#333',
-    shadowOpacity: .3,
-    shadowRadius: 2,
+    backgroundColor: theme.colors.darkGray,
     marginVertical: 20
   },
   

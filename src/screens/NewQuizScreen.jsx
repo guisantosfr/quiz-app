@@ -7,6 +7,7 @@ import api from '../services/api';
 import globalStyles from '../utils/globalStyles';
 import Button from '../components/Button';
 import Input from '../components/Input';
+import theme from '../theme';
 
 export default function NewQuizScreen() {
   const [quizName, setQuizName] = useState('');
@@ -28,7 +29,7 @@ export default function NewQuizScreen() {
         duration: 3000,
         position: 75,
         animation: true,
-        backgroundColor: '#FF445D'
+        backgroundColor: theme.colors.error
       });
 
       return;
@@ -49,7 +50,7 @@ export default function NewQuizScreen() {
         duration: 3000,
         position: 75,
         animation: true,
-        backgroundColor: '#2CDE80'
+        backgroundColor: theme.colors.success
       });
 
       setQuizName('');

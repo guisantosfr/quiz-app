@@ -3,6 +3,7 @@ import { ActivityIndicator, SafeAreaView, StyleSheet, Text, View } from 'react-n
 import Toast from 'react-native-root-toast';
 
 import globalStyles from '../utils/globalStyles';
+import theme from '../theme';
 import api from '../services/api';
 import Button from '../components/Button';
 import StepperButton from '../components/StepperButton';
@@ -71,7 +72,7 @@ export default function ApplyQuizScreen() {
         duration: 3000,
         position: 75,
         animation: true,
-        backgroundColor: '#FF445D'
+        backgroundColor: theme.colors.error
       });
   
       return;
@@ -82,7 +83,7 @@ export default function ApplyQuizScreen() {
         duration: 3000,
         position: 75,
         animation: true,
-        backgroundColor: '#FF445D'
+        backgroundColor: theme.colors.error
       });
   
       return;
@@ -112,7 +113,7 @@ export default function ApplyQuizScreen() {
       duration: 3000,
       position: 75,
       animation: true,
-      backgroundColor: '#2CDE80'
+      backgroundColor: theme.colors.success
     })
   };
 
@@ -124,7 +125,7 @@ export default function ApplyQuizScreen() {
             <Text style={[globalStyles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
             {
               !quizzes ?
-              <ActivityIndicator size="large" color="#699CF4" />
+              <ActivityIndicator size="large" color={theme.colors.lightBlue} />
               :
               <RadioButtons data={quizzes} onSelect={(value) => setSelectedQuiz(value)}/>
             }
@@ -137,7 +138,7 @@ export default function ApplyQuizScreen() {
             <Text style={[globalStyles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
             {
               !classes ?
-              <ActivityIndicator size="large" color="#699CF4" />
+              <ActivityIndicator size="large" color={theme.colors.lightBlue} />
               :
               <RadioButtons data={classes} onSelect={(value) => setSelectedClass(value)}/>
             }
@@ -154,7 +155,7 @@ export default function ApplyQuizScreen() {
           <>
           {
             !quizToApply || !classToApply ?
-            <ActivityIndicator size="large" color="#699CF4" /> :
+            <ActivityIndicator size="large" color={theme.colors.lightBlue} /> :
 
           <>
             <Text style={[globalStyles.title, globalStyles.text]}>Passo 3 de 3 - Confirmar dados</Text>
@@ -179,7 +180,7 @@ export default function ApplyQuizScreen() {
     <SafeAreaView style={globalStyles.container}>
     {
       !classes || !quizzes ?
-      <ActivityIndicator size="large" color="#699CF4" />
+      <ActivityIndicator size="large" color={theme.colors.lightBlue} />
       :
       (
         classes.length === 0 || quizzes.length === 0 ?
@@ -193,14 +194,6 @@ export default function ApplyQuizScreen() {
 }
 
 const styles = StyleSheet.create({
-  notification: {
-    color: '#0c0',
-  },
-  
-  error: {
-    color: '#c00'
-  },
-
   buttonArea: {
     flex: 1,
     flexWrap: 'wrap',

@@ -1,6 +1,7 @@
-import { ActivityIndicator, FlatList, Pressable, SafeAreaView, Text } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import api from '../services/api';
+import theme from '../theme';
 import globalStyles from '../utils/globalStyles';
 
 export default function ListClassesScreen({ navigation }) {
@@ -20,7 +21,7 @@ export default function ListClassesScreen({ navigation }) {
   }, [classes]);
 
   const renderItem = ({ item }) => (
-    <Pressable style={globalStyles.card} onPress={() => navigation.navigate('Class Detail', { id: item._id})}>
+    <Pressable style={styles.card} onPress={() => navigation.navigate('Class Detail', { id: item._id})}>
       <Text>{item.name}</Text>
     </Pressable>
   )
@@ -29,7 +30,7 @@ export default function ListClassesScreen({ navigation }) {
     <SafeAreaView style={globalStyles.container}>
       {
         !classes ?
-          <ActivityIndicator size="large" color="#699CF4" />
+          <ActivityIndicator size="large" color={theme.colors.lightBlue} />
           :
           (
             classes.length === 0 ?
@@ -51,3 +52,17 @@ export default function ListClassesScreen({ navigation }) {
     </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  card: {
+    alignItems: 'center',
+    backgroundColor: theme.colors.darkGray,
+    padding: 20,
+    borderRadius: 10,
+    width: Dimensions.get('window').width * 0.6,
+    marginVertical: 10,
+    flexBasis: '40%',
+    marginBottom: 20,
+    marginHorizontal: 5
+  }
+})

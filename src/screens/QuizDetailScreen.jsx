@@ -3,6 +3,7 @@ import { useRoute } from '@react-navigation/native';
 import globalStyles from '../utils/globalStyles';
 import { useEffect, useState } from 'react';
 import api from '../services/api';
+import theme from '../theme';
 import TableView from '../components/TableView';
 
 export default function QuizDetailScreen() {
@@ -23,7 +24,7 @@ export default function QuizDetailScreen() {
     <SafeAreaView style={globalStyles.container}>
     {
       !selectedQuiz ?
-      <ActivityIndicator size="large" color="#699CF4" />
+      <ActivityIndicator size="large" color={theme.colors.lightBlue} />
         :
         (
           <>

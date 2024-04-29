@@ -1,15 +1,15 @@
 import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
-import globalStyles from '../utils/globalStyles';
+import theme from '../theme';
 
 export default function StepperButton({ text, onPress, secondary }) {
   return (
       secondary ?
         <TouchableOpacity style={[styles.button, styles.secondary]} onPress={onPress}>
-          <Text style={globalStyles.buttonText}>{text}</Text>
+          <Text style={styles.buttonText}>{text}</Text>
         </TouchableOpacity>
       :
         <TouchableOpacity style={[styles.button, styles.primary]} onPress={onPress}>
-          <Text style={globalStyles.buttonText}>{text}</Text>
+          <Text style={styles.buttonText}>{text}</Text>
         </TouchableOpacity>
   )
 }
@@ -27,12 +27,10 @@ const styles = StyleSheet.create({
   },
   
   primary:{
-    backgroundColor: '#699CF4'
+    backgroundColor: theme.colors.lightBlue
   },
 
   secondary: {
-    backgroundColor: '#AAA',
-    borderColor: '#DDD',
-    borderWidth: 2
+    backgroundColor: theme.colors.darkGray
   }
 })

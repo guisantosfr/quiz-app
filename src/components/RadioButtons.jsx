@@ -1,6 +1,7 @@
 import { FlatList, Pressable, StyleSheet, Text } from 'react-native';
 import { useState } from 'react';
 import globalStyles from '../utils/globalStyles';
+import theme from '../theme';
 
 export default function RadioButtons({ data, onSelect }) {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -41,16 +42,16 @@ const styles = StyleSheet.create({
   },
 
   unselected: {
-    backgroundColor: '#699CF4'
+    backgroundColor: theme.colors.lightBlue
   },
 
   selected: {
-    backgroundColor: '#00C'
+    backgroundColor: theme.colors.darkBlue
   },
 
   text: {
     fontSize: 15,
-    color: 'white',
+    color: theme.colors.background,
     textAlign: 'center',
   }
 });
