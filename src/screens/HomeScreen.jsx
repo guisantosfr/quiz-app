@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
 import Card from '../components/Card';

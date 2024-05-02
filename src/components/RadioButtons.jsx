@@ -50,8 +50,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 15,
-    color: theme.colors.background,
+    color: theme.colors.white,
     textAlign: 'center',
   }
 });

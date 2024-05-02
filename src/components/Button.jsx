@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: theme.colors.background,
-    fontSize: 18
+    color: theme.colors.white,
+    fontSize: theme.fontSizes.large
   },
 })
