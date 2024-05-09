@@ -1,9 +1,9 @@
 import { Dimensions, StyleSheet, TextInput } from "react-native";
 import theme from '../theme';
 
-export default function Input({ onChangeText, value, placeholder }) {
+export default function Input({ onChangeText, value, placeholder, secureTextEntry}) {
   return (
-    <TextInput onChangeText={onChangeText} value={value} style={styles.input} placeholder={placeholder} />
+    <TextInput onChangeText={onChangeText} value={value} style={styles.input} placeholder={placeholder} secureTextEntry={secureTextEntry}/>
   )
 }
 
