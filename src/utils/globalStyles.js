@@ -20,5 +20,9 @@ export default StyleSheet.create({
   list: {
     flexGrow: 0,
     height: '70%',  
-  }
+  },
+
+  link: {
+    color: theme.colors.lightBlue
+}
 });
