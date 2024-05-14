@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { Dimensions, SafeAreaView, StyleSheet, Text } from "react-native";
 import { useState } from "react";
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 
@@ -27,6 +27,8 @@ export default function RegisterScreen() {
 
     return (
         <SafeAreaView style={globalStyles.container}>
+            <Text style={globalStyles.title}>Cadastre-se</Text>
+
             <Input onChangeText={setEmail} placeholder="Email" value={email} />
             <Input onChangeText={setName} placeholder="Nome" value={name} />
 
@@ -53,7 +55,7 @@ export default function RegisterScreen() {
 
 const styles = StyleSheet.create({
     tabsContainerStyle: {
-        width: '70%',
+        width: Dimensions.get('window').width * 0.6,
         marginVertical: 20
     },
     tabStyle: {

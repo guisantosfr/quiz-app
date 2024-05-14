@@ -13,8 +13,9 @@ export default StyleSheet.create({
   },
 
   title: {
-    marginTop: 75,
-    marginBottom: 40
+    marginVertical: 40,
+    fontWeight: 'bold',
+    fontSize: theme.fontSizes.large
   },
 
   list: {

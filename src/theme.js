@@ -10,7 +10,8 @@ const theme = {
     },
 
     fontSizes:{
-        large: 18
+        large: 24,
+        medium: 18
     }
 }
 

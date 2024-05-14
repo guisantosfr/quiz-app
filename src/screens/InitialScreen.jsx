@@ -6,13 +6,9 @@ import globalStyles from "../utils/globalStyles";
 export default function InitialScreen({ navigation }) {
     return (
         <SafeAreaView style={globalStyles.container}>
-            <Text>Bem-vindo</Text>
-            <Text>Selecione uma opção</Text>
-
+            <Text style={globalStyles.title}>Bem-vindo</Text>
             <Button text="Avançar" onPress={() => navigation.navigate('Register')}/>
-
             <Text>Já tem conta? <Link to={{ screen: 'Login'}} style={globalStyles.link}>Login</Link></Text>
-
         </SafeAreaView>
     );
 }

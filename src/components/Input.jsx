@@ -1,5 +1,4 @@
 import { Dimensions, StyleSheet, TextInput } from "react-native";
-import theme from '../theme';
 
 export default function Input({ onChangeText, value, placeholder, secureTextEntry}) {
   return (
@@ -10,7 +9,7 @@ export default function Input({ onChangeText, value, placeholder, secureTextEntr
 const styles = StyleSheet.create({
   input: {
     height: 50,
-    margin: 20,
+    marginVertical: 17.5,
     borderWidth: 1,
     padding: 12,
     width: Dimensions.get('window').width * 0.6,
