@@ -1,35 +1,70 @@
 import { Dimensions, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { useState } from "react";
+import { Link } from "@react-navigation/native";
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import Toast from 'react-native-root-toast';
+
 import Input from "../components/Input";
 import Button from "../components/Button";
+
 import globalStyles from "../utils/globalStyles";
-import { Link } from "@react-navigation/native";
+import theme from "../theme";
+
+const validationSchema = yup.object().shape({
+    email: yup.string().email('Email inválido').required('Email é obrigatório'),
+    password: yup.string().min(8, ({ min }) => `Senha deve ter no mínimo ${min} caracteres`).required('Senha é obrigatória')
+})
 
 export default function LoginScreen() {
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
-
-    function login() {
-        console.log('EMAIL: ', email);
-        console.log('PASSWORD: ', password);
-    }
-
     return (
-        <SafeAreaView style={globalStyles.container}>
-            <Text style={globalStyles.title}>Bem-vindo de volta</Text>
+            <Formik
+                initialValues={{email: '', password: ''}}
+                validationSchema={validationSchema}
+                onSubmit={values => console.log(values)}
+            >
+            {({ 
+                handleChange, 
+                handleBlur, 
+                handleSubmit, 
+                values, 
+                errors,
+                touched
+            }) => (
+            <SafeAreaView style={globalStyles.container}>
+                <Text style={globalStyles.title}>Bem-vindo de volta</Text>    
+                <Input 
+                    placeholder="Email"
+                    onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                    value={values.email}
+                />
+                        
+                <Input 
+                    placeholder="Senha"
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                    value={values.password}
+                    secureTextEntry
+                />
+            
+                <View style={styles.box}>
+                    <Text style={styles.right}>Esqueceu a senha?</Text>
+                </View>
 
-            <Input onChangeText={setEmail} placeholder="Email" value={email} />
-            <Input onChangeText={setPassword} placeholder="Senha" value={password} secureTextEntry/>
+                {(errors.email && touched.email) &&
+                  <Text style={styles.errorText}>{errors.email}</Text>
+                }
 
-            <View style={styles.box}>
-                <Text style={styles.right}>Esqueceu a senha?</Text>
-            </View>
-
-
-            <Button onPress={login} text="Login" />
-
-            <Text>Não tem conta? <Link to={{ screen: 'Register'}} style={globalStyles.link}>Cadastre-se</Link></Text>
-        </SafeAreaView>
+                {(errors.password && touched.password) &&
+                  <Text style={styles.errorText}>{errors.password}</Text>
+                }
+            
+                <Button onPress={handleSubmit} text="Login" />
+            
+                <Text>Não tem conta? <Link to={{ screen: 'Register'}} style={globalStyles.link}>Cadastre-se</Link></Text>
+            </SafeAreaView>
+            )}
+        </Formik>
     );
 }
 
@@ -40,5 +75,11 @@ const styles = StyleSheet.create({
 
     right:{
         textAlign: 'right'
+    },
+
+    errorText: {
+        marginTop: 10,
+        textAlign: 'center',
+        color: theme.colors.error
     }
 })
