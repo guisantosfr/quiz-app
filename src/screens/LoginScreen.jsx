@@ -2,7 +2,6 @@ import { Dimensions, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Link } from "@react-navigation/native";
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import Toast from 'react-native-root-toast';
 
 import Input from "../components/Input";
 import Button from "../components/Button";
