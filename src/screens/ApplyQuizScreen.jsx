@@ -9,6 +9,9 @@ import Button from '../components/Button';
 import StepperButton from '../components/StepperButton';
 import RadioButtons from '../components/RadioButtons';
 
+import useClasses from '../hooks/useClasses';
+import useQuizzes from '../hooks/useQuizzes';
+
 export default function ApplyQuizScreen() {
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -18,34 +21,8 @@ export default function ApplyQuizScreen() {
   const [classToApply, setClassToApply] = useState(null);
   const [quizToApply, setQuizToApply] = useState(null);
 
-  const [classes, setClasses] = useState(null);
-  const [quizzes, setQuizzes] = useState(null);
-
-  useEffect(() => {
-    const fetchQuizzes = async () => {
-      try {
-        const result = await api.get('/quizzes');
-        setQuizzes(result.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchQuizzes();
-  }, []);
-
-  useEffect(() => {
-    const fetchClasses = async () => {
-      try {
-        const result = await api.get('/classes');
-        setClasses(result.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchClasses();
-  }, []);
+  const { classes } = useClasses();
+  const { quizzes } = useQuizzes();
 
   useEffect(() => {
     const getToApply = async() => {
@@ -64,7 +41,6 @@ export default function ApplyQuizScreen() {
   }, [currentStep]);
 
   const nextStep = () => {
-    
     if(currentStep === 2) return;
     
     if(currentStep === 0 && !selectedQuiz){
@@ -117,7 +93,7 @@ export default function ApplyQuizScreen() {
     })
   };
 
-  const renderStep = () => {
+  const renderStep = () => { 
     switch(currentStep){
       case 0:
         return(

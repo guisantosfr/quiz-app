@@ -1,24 +1,12 @@
 import { ActivityIndicator, Dimensions, FlatList, Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
-import { useState, useEffect } from 'react';
-import api from '../services/api';
+
 import theme from '../theme';
 import globalStyles from '../utils/globalStyles';
 
+import useQuizzes from '../hooks/useQuizzes';
+
 export default function ListQuizzesScreen({ navigation }) {
-  const [quizzes, setQuizzes] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await api.get('/quizzes');
-        setQuizzes(result.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchData();
-  }, [quizzes]);
+  const { quizzes } = useQuizzes();
 
   const renderItem = ({ item }) => (
     <Pressable style={styles.card} onPress={() => navigation.navigate('Quiz Detail', { id: item._id})}>

@@ -3,7 +3,7 @@ import { Link } from '@react-navigation/native'
 import Button from '../components/Button';
 import globalStyles from "../utils/globalStyles";
 
-export default function InitialScreen({ navigation }) {
+export default function WelcomeScreen({ navigation }) {
     return (
         <SafeAreaView style={globalStyles.container}>
             <Text style={globalStyles.title}>Bem-vindo</Text>

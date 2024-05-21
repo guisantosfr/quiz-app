@@ -1,24 +1,10 @@
 import { ActivityIndicator, Dimensions, FlatList, Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
-import { useState, useEffect } from 'react';
-import api from '../services/api';
 import theme from '../theme';
 import globalStyles from '../utils/globalStyles';
+import useClasses from '../hooks/useClasses';
 
 export default function ListClassesScreen({ navigation }) {
-  const [classes, setClasses] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await api.get('/classes');
-        setClasses(result.data)
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchData();
-  }, [classes]);
+  const { classes } = useClasses();
 
   const renderItem = ({ item }) => (
     <Pressable style={styles.card} onPress={() => navigation.navigate('Class Detail', { id: item._id})}>
