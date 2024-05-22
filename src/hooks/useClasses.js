@@ -13,11 +13,32 @@ const useClasses = () => {
       }
     }
 
+    const fetchClassById = async (id) => {
+      try {
+          const result = await api.get(`/classes/${id}`);
+          return result.data;
+      } catch (error) {
+          console.error('Error fetching class:', error);
+          return null;
+      }
+    };
+
+    const createNewClass = async (newClass) => {
+      try {
+          const result = await api.post('/classes', newClass);
+          setClasses((prevClasses) => [...prevClasses, result.data]);
+          return result.data;
+      } catch (error) {
+          console.error('Error adding class:', error);
+          return null;
+      }
+  };
+
     useEffect(() => {
         fetchData();
     }, [classes]);
 
-    return { classes, refetch: fetchData };
+    return { classes, refetch: fetchData, fetchClassById, createNewClass };
 }
 
 export default useClasses;

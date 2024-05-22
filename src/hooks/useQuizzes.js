@@ -13,11 +13,32 @@ const useQuizzes = () => {
       }
     }
 
+    const fetchQuizById = async (id) => {
+      try {
+          const result = await api.get(`/quizzes/${id}`);
+          return result.data;
+      } catch (error) {
+          console.error('Error fetching quiz:', error);
+          return null;
+      }
+    };
+
+    const createNewQuiz = async (newQuiz) => {
+      try {
+          const result = await api.post('/quizzes', newQuiz);
+          setQuizzes((prevQuizzes) => [...prevQuizzes, result.data]);
+          return result.data;
+      } catch (error) {
+          console.error('Error adding quiz:', error);
+          return null;
+      }
+  };
+
     useEffect(() => {
         fetchData();
     }, [quizzes]);
 
-    return { quizzes, refetch: fetchData };
+    return { quizzes, refetch: fetchData, fetchQuizById, createNewQuiz };
 }
 
 export default useQuizzes;

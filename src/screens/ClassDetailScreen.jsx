@@ -2,20 +2,21 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
+import useClasses from '../hooks/useClasses';
 import globalStyles from '../utils/globalStyles';
 import theme from '../theme';
-import api from '../services/api';
 import TableView from '../components/TableView';
 
 export default function ClassDetailScreen() {
   const route = useRoute();
   const { id } = route.params;
   const [selectedClass, setSelectedClass] = useState(null);
+  const { fetchClassById } = useClasses();
 
   useEffect(() => {
     const getClass = async() => {
-      const result = await api.get(`/classes/${id}`);
-      setSelectedClass(result.data);
+      const result = await fetchClassById(id);
+      setSelectedClass(result);
     }
     getClass();
   }, []);

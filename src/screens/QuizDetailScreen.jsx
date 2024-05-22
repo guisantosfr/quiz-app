@@ -1,8 +1,9 @@
 import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+
 import globalStyles from '../utils/globalStyles';
 import { useEffect, useState } from 'react';
-import api from '../services/api';
+import useQuizzes from '../hooks/useQuizzes';
 import theme from '../theme';
 import TableView from '../components/TableView';
 
@@ -10,11 +11,12 @@ export default function QuizDetailScreen() {
   const route = useRoute();
   const { id } = route.params;
   const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const { fetchQuizById } = useQuizzes();
 
   useEffect(() => {
     const getQuiz = async() => {
-      const result = await api.get(`/quizzes/${id}`);
-      setSelectedQuiz(result.data);
+      const result = await fetchQuizById(id);
+      setSelectedQuiz(result);
     }
 
     getQuiz();

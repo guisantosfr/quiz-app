@@ -3,7 +3,9 @@ import { useState } from 'react';
 import Toast from 'react-native-root-toast';
 
 import { pickDocumentAsync } from '../helpers/pickDocument';
-import api from '../services/api';
+
+import useClasses from '../hooks/useClasses';
+
 import globalStyles from '../utils/globalStyles';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -13,6 +15,8 @@ export default function NewClassScreen() {
   const [className, setClassName] = useState('');
   const [students, setStudents] = useState(null);
   const [fileName, setFileName] = useState(null);
+
+  const { createNewClass } = useClasses();
 
   const handleUpload = async () => {
     const result = await pickDocumentAsync();
@@ -40,11 +44,12 @@ export default function NewClassScreen() {
       name,
       email
     }));
-   
-    await api.post('/classes', {
+
+    createNewClass({
       name: className,
       students: savedStudents
-    }).then(function (response) {
+    })
+    .then(function (response) {
       Toast.show('Turma criada com sucesso', {
         duration: 3000,
         position: 75,

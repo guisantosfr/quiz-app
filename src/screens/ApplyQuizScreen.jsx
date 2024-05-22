@@ -4,7 +4,6 @@ import Toast from 'react-native-root-toast';
 
 import globalStyles from '../utils/globalStyles';
 import theme from '../theme';
-import api from '../services/api';
 import Button from '../components/Button';
 import StepperButton from '../components/StepperButton';
 import RadioButtons from '../components/RadioButtons';
@@ -15,25 +14,25 @@ import useQuizzes from '../hooks/useQuizzes';
 export default function ApplyQuizScreen() {
   const [currentStep, setCurrentStep] = useState(0);
 
+  const { classes, fetchClassById } = useClasses();
+  const { quizzes, fetchQuizById } = useQuizzes();
+
   const [selectedClass, setSelectedClass] = useState(null);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
 
   const [classToApply, setClassToApply] = useState(null);
   const [quizToApply, setQuizToApply] = useState(null);
 
-  const { classes } = useClasses();
-  const { quizzes } = useQuizzes();
-
   useEffect(() => {
     const getToApply = async() => {
       if(currentStep === 1){
-        const result = await api.get(`/quizzes/${selectedQuiz}`);
-        setQuizToApply(result.data);
+        const result = await fetchQuizById(selectedQuiz);
+        setQuizToApply(result);
       };
   
       if(currentStep === 2){
-        const result = await api.get(`/classes/${selectedClass}`);
-        setClassToApply(result.data);
+        const result = await fetchClassById(selectedClass);
+        setClassToApply(result);
       };
     }
 
