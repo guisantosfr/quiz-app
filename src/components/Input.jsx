@@ -1,8 +1,20 @@
+import { useState } from "react";
 import { Dimensions, StyleSheet, TextInput } from "react-native";
+import theme from '../theme';
 
 export default function Input({ onChangeText, value, placeholder, secureTextEntry}) {
+  const [focus, setFocus] = useState(false);
+
   return (
-    <TextInput onChangeText={onChangeText} value={value} style={styles.input} placeholder={placeholder} secureTextEntry={secureTextEntry}/>
+    <TextInput 
+    onChangeText={onChangeText} 
+    value={value} 
+    placeholder={placeholder} 
+    secureTextEntry={secureTextEntry}
+    style={[styles.input, focus && styles.focus]} 
+    onFocus={() => setFocus(true)}
+    onBlur={() => setFocus(false)}
+    />
   )
 }
 
@@ -14,5 +26,10 @@ const styles = StyleSheet.create({
     padding: 12,
     width: Dimensions.get('window').width * 0.6,
     borderRadius: 10
+  },
+
+  focus: { 
+    borderColor: theme.colors.lightBlue,
+    borderWidth: 2
   }
 })

@@ -24,6 +24,7 @@ export default StyleSheet.create({
   },
 
   link: {
-    color: theme.colors.lightBlue
+    color: theme.colors.lightBlue,
+    textDecorationLine: 'underline'
 }
 });
