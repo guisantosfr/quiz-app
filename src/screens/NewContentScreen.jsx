@@ -1,15 +1,15 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import ListClassesScreen from './ListClassesScreen';
 import NewClassScreen from './NewClassScreen';
+import NewQuizScreen from './NewQuizScreen';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function QuizzesScreen() {
+export default function NewContentScreen() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Listar" component={ListClassesScreen} />
-      <Tab.Screen name="Nova classe" component={NewClassScreen} />
+      <Tab.Screen name="Nova turma" component={NewClassScreen} />
+      <Tab.Screen name="Novo questionário" component={NewQuizScreen} />
     </Tab.Navigator>
   );
 }

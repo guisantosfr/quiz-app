@@ -1,5 +1,6 @@
-import ClassesScreen from './ClassesScreen';
-import QuizzesScreen from './QuizzesScreen';
+import ListClassesScreen from './ListClassesScreen';
+import ListQuizzesScreen from './ListQuizzesScreen';
+import NewContentScreen from './NewContentScreen';
 import ApplyQuizScreen from './ApplyQuizScreen';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -20,7 +21,7 @@ export default function TeacherScreen() {
       }}>
         <Tab.Screen
          name="Questionários"
-         component={QuizzesScreen}
+         component={ListQuizzesScreen}
          options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesomeIcons name="book" color={color} size={size}/>
@@ -28,10 +29,18 @@ export default function TeacherScreen() {
          }}/>
         <Tab.Screen
          name="Turmas"
-         component={ClassesScreen}
+         component={ListClassesScreen}
          options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="google-classroom" color={color} size={size}/>
+          ),
+        }}/>
+        <Tab.Screen
+         name="Novo"
+         component={NewContentScreen}
+         options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesomeIcons name="plus-circle" color={color} size={size}/>
           ),
         }}/>
         <Tab.Screen

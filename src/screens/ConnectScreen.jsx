@@ -5,7 +5,6 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 
 export default function ConnectScreen() {
-  const [email, setEmail] = useState('');
   const [quizCode, setQuizCode] = useState('');
 
   function connect() {
@@ -14,10 +13,9 @@ export default function ConnectScreen() {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      <Input onChangeText={setEmail} placeholder="Email" value={email} />
       <Input onChangeText={setQuizCode} placeholder="Código" value={quizCode} />
 
-      <Button onPress={connect} text="Conectar ao questionário" />
+      <Button onPress={connect} text="Conectar" />
     </SafeAreaView>
   )
 }
