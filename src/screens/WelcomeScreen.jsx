@@ -8,7 +8,7 @@ export default function WelcomeScreen({ navigation }) {
         <SafeAreaView style={globalStyles.container}>
             <Text style={globalStyles.title}>Bem-vindo</Text>
             <Button text="Avançar" onPress={() => navigation.navigate('Register')}/>
-            <Text>Já tem conta? <Link to={{ screen: 'Login'}} style={globalStyles.link}>Login</Link></Text>
+            <Link to={{ screen: 'Login'}} style={globalStyles.link}>Já tem conta? Login</Link>
         </SafeAreaView>
     );
 }

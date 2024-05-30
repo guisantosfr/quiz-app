@@ -5,7 +5,7 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 
 import HomeScreen from './src/screens/HomeScreen';
 import TeacherScreen from './src/screens/TeacherScreen';
-import StudentScreen from './src/screens/StudentScreen';
+import ConnectScreen from './src/screens/ConnectScreen';
 import NewClassScreen from './src/screens/NewClassScreen';
 import NewQuizScreen from './src/screens/NewQuizScreen';
 import ClassesScreen from './src/screens/ClassesScreen';
@@ -16,6 +16,7 @@ import QuizDetailScreen from './src/screens/QuizDetailScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
+import StudentScreen from './src/screens/StudentScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +31,7 @@ export default function App() {
       }}>
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='Teacher' component={TeacherScreen} />
-        <Stack.Screen name='Student' component={StudentScreen} />
+        <Stack.Screen name='Connect' component={ConnectScreen} />
         <Stack.Screen name='New class' component={NewClassScreen} />
         <Stack.Screen name='New quiz' component={NewQuizScreen} />
         <Stack.Screen name='Classes' component={ClassesScreen} />
@@ -41,6 +42,7 @@ export default function App() {
         <Stack.Screen name='Welcome' component={WelcomeScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
+        <Stack.Screen name='Student' component={StudentScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     </RootSiblingParent>

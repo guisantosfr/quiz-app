@@ -1,23 +1,56 @@
-import { SafeAreaView } from 'react-native';
-import { useState } from 'react';
-import globalStyles from '../utils/globalStyles';
-import Input from '../components/Input';
-import Button from '../components/Button';
+import ConnectScreen from './ConnectScreen';
+import SelectQuizScreen from './SelectQuizScreen';
+import ActivityScreen from './ActivityScreen';
+import AccountInfoScreen from './AccountInfoScreen';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+const Tab = createBottomTabNavigator();
 
 export default function StudentScreen() {
-  const [email, setEmail] = useState('');
-  const [quizCode, setQuizCode] = useState('');
-
-  function connect() {
-
-  }
-
   return (
-    <SafeAreaView style={globalStyles.container}>
-      <Input onChangeText={setEmail} placeholder="Email" value={email} />
-      <Input onChangeText={setQuizCode} placeholder="Código" value={quizCode} />
-
-      <Button onPress={connect} text="Conectar ao questionário" />
-    </SafeAreaView>
-  )
+      <Tab.Navigator screenOptions={{
+        tabBarStyle:{
+          height: 65
+        },
+        tabBarLabelStyle: {
+          paddingBottom: 10
+        }
+      }}>
+        <Tab.Screen
+         name="Conectar"
+         component={ConnectScreen}
+         options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesomeIcons name="qrcode" color={color} size={size}/>
+          )
+         }}/>
+        <Tab.Screen
+         name="Resolver"
+         component={SelectQuizScreen}
+         options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="question-answer" color={color} size={size}/>
+          )
+         }}/>
+        <Tab.Screen
+         name="Atividade"
+         component={ActivityScreen}
+         options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesomeIcons name="history" color={color} size={size}/>
+          )
+         }}/>
+        <Tab.Screen
+         name="Conta"
+         component={AccountInfoScreen}
+         options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="account-circle" color={color} size={size}/>
+          )
+         }}/>
+      </Tab.Navigator>
+  );
 }

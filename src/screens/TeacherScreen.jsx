@@ -4,11 +4,11 @@ import ApplyQuizScreen from './ApplyQuizScreen';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
 
-export default function TeacherScreen({ navigation }) {
+export default function TeacherScreen() {
   return (
       <Tab.Navigator screenOptions={{
         tabBarStyle:{
@@ -31,7 +31,7 @@ export default function TeacherScreen({ navigation }) {
          component={ClassesScreen}
          options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="people" color={color} size={size}/>
+            <MaterialCommunityIcons name="google-classroom" color={color} size={size}/>
           ),
         }}/>
         <Tab.Screen
