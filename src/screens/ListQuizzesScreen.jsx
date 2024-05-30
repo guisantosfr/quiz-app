@@ -25,7 +25,7 @@ export default function ListQuizzesScreen({ navigation }) {
               <Text style={globalStyles.text}>Não há questionários cadastrados</Text>
               :
               <>
-                <Text style={[globalStyles.text, globalStyles.title]}>Questionários cadastrados</Text>
+                <Text style={[globalStyles.text, globalStyles.title]}>Meus questionários</Text>
                 <FlatList
                   data={quizzes}
                   columnWrapperStyle={{flexWrap: 'wrap'}}

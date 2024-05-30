@@ -25,7 +25,7 @@ export default function App() {
     <StatusBar style='dark'/>
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Welcome' screenOptions={{
+      <Stack.Navigator initialRouteName='Home' screenOptions={{
         headerShown: false
       }}>
         <Stack.Screen name='Home' component={HomeScreen} />

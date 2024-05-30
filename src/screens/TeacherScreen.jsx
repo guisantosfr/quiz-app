@@ -12,11 +12,14 @@ export default function TeacherScreen({ navigation }) {
   return (
       <Tab.Navigator screenOptions={{
         tabBarStyle:{
-          height: 60
+          height: 65
         },
+        tabBarLabelStyle: {
+          paddingBottom: 10
+        }
       }}>
         <Tab.Screen
-         name="Quizzes"
+         name="Questionários"
          component={QuizzesScreen}
          options={{
           tabBarIcon: ({ color, size }) => (
@@ -24,7 +27,7 @@ export default function TeacherScreen({ navigation }) {
           )
          }}/>
         <Tab.Screen
-         name="Classes"
+         name="Turmas"
          component={ClassesScreen}
          options={{
           tabBarIcon: ({ color, size }) => (

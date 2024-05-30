@@ -43,7 +43,7 @@ export default function NewQuizScreen() {
       subject, 
       topic,
       question,
-      answer
+      answer : answer === ("Verdadeiro" || "V") ? true : false
     }))
 
     createNewQuiz({
