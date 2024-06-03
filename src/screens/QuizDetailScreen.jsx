@@ -1,11 +1,10 @@
-import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, SafeAreaView, Text, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 import globalStyles from '../utils/globalStyles';
 import { useEffect, useState } from 'react';
 import useQuizzes from '../hooks/useQuizzes';
 import theme from '../theme';
-import TableView from '../components/TableView';
 
 export default function QuizDetailScreen() {
   const route = useRoute();
@@ -22,6 +21,14 @@ export default function QuizDetailScreen() {
     getQuiz();
   }, []);
 
+  const renderItem = ({ item }) => (
+    <View>
+      <Text>{item.subject}</Text>
+      <Text>{item.topic}</Text>
+      <Text>{item.question}</Text>
+    </View>
+  )
+
   return (
     <SafeAreaView style={globalStyles.container}>
     {
@@ -34,7 +41,12 @@ export default function QuizDetailScreen() {
             <Text style={globalStyles.text}>Nome: { selectedQuiz.name }</Text>
             <Text style={globalStyles.text}>Questões: { selectedQuiz.questions.length }</Text>
 
-            <TableView data={selectedQuiz.questions}/>
+            <FlatList
+                  data={selectedQuiz.questions}
+                  keyExtractor={item => item._id}
+                  renderItem={renderItem}
+                  style={{width: Dimensions.get('window').width * 0.9}}
+                />
           </>
         )
     }

@@ -27,7 +27,6 @@
     "react-native-screens": "3.31.1",
     "react-native-segmented-control-tab": "^4.0.0",
     "react-native-tab-view": "^3.5.2",
-    "react-native-table-component": "^1.2.2",
     "react-native-vector-icons": "^10.0.3",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz",
     "yup": "^1.4.0"
