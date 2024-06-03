@@ -1,11 +1,8 @@
 import { SafeAreaView, Text } from 'react-native';
 import { useState } from 'react';
-import Toast from 'react-native-root-toast';
-
+import { showErrorToast, showSuccessToast } from '../helpers/showToast';
 import { pickDocumentAsync } from '../helpers/pickDocument';
-
 import useClasses from '../hooks/useClasses';
-
 import globalStyles from '../utils/globalStyles';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -29,13 +26,7 @@ export default function NewClassScreen() {
 
   const saveClass = async () => {
     if (!className || !students) {
-      Toast.show('Nome da turma e planilha de alunos são obrigatórios', {
-        duration: 3000,
-        position: 75,
-        animation: true,
-        backgroundColor: theme.colors.error
-      });
-
+      showErrorToast('Nome da turma e planilha de alunos são obrigatórios')
       return;
     }
     
@@ -50,13 +41,7 @@ export default function NewClassScreen() {
       students: savedStudents
     })
     .then(function (response) {
-      Toast.show('Turma criada com sucesso', {
-        duration: 3000,
-        position: 75,
-        animation: true,
-        backgroundColor: theme.colors.success
-      })
-
+      showSuccessToast('Turma criada com sucesso')
       setClassName('');
       setStudents(null);
       setFileName(null);

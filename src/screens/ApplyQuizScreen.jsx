@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import Toast from 'react-native-root-toast';
+import { showErrorToast, showSuccessToast } from '../helpers/showToast';
 
 import globalStyles from '../utils/globalStyles';
 import theme from '../theme';
@@ -43,24 +43,12 @@ export default function ApplyQuizScreen() {
     if(currentStep === 2) return;
     
     if(currentStep === 0 && !selectedQuiz){
-      Toast.show('Selecione um questionário para avançar', {
-        duration: 3000,
-        position: 75,
-        animation: true,
-        backgroundColor: theme.colors.error
-      });
-  
+      showErrorToast('Selecione um questionário para avançar');
       return;
     } 
     
     if(currentStep === 1 && !selectedClass){
-      Toast.show('Selecione uma turma para avançar', {
-        duration: 3000,
-        position: 75,
-        animation: true,
-        backgroundColor: theme.colors.error
-      });
-  
+      showErrorToast('Selecione uma turma para avançar');
       return;
     } 
 
@@ -84,12 +72,7 @@ export default function ApplyQuizScreen() {
   };
 
   const applyQuiz = () => {
-    Toast.show('Questionário aplicado', {
-      duration: 3000,
-      position: 75,
-      animation: true,
-      backgroundColor: theme.colors.success
-    })
+    showSuccessToast('Questionário aplicado');
   };
 
   const renderStep = () => { 
