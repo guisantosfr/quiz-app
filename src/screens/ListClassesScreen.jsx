@@ -2,14 +2,15 @@ import { ActivityIndicator, Dimensions, FlatList, Pressable, SafeAreaView, Style
 import theme from '../theme';
 import globalStyles from '../utils/globalStyles';
 import useClasses from '../hooks/useClasses';
+import Card from '../components/Card';
 
 export default function ListClassesScreen({ navigation }) {
   const { classes } = useClasses();
 
   const renderItem = ({ item }) => (
-    <Pressable style={styles.card} onPress={() => navigation.navigate('Class Detail', { id: item._id})}>
+    <Card onPress={() => navigation.navigate('Class Detail', { id: item._id})}>
       <Text>{item.name}</Text>
-    </Pressable>
+    </Card>
   )
 
   return (
@@ -36,17 +37,3 @@ export default function ListClassesScreen({ navigation }) {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  card: {
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: theme.colors.darkGray,
-    padding: 25,
-    borderRadius: 10,
-    width: Dimensions.get('window').width * 0.8,
-    marginVertical: 10,
-    marginBottom: 20,
-    marginHorizontal: 5
-  }
-})

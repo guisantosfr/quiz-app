@@ -1,32 +1,24 @@
-import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import theme from '../theme';
 
 export default function Card({ onPress, children }) {
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress}>
-      <View style={styles.cardContent}>
-        { children }
-      </View>
-    </TouchableOpacity>
+    <Pressable style={styles.card} onPress={onPress}>
+      {children}
+    </Pressable>
   )
 }
 
 const styles = StyleSheet.create({
   card: {
-    width: Dimensions.get('window').width * 0.75,
-    borderRadius: 10,
-    elevation: 3,
-    backgroundColor: theme.colors.darkGray,
-    marginVertical: 20
-  },
-  
-  cardContent: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-
-    width: '75%',
-    padding: 20
+    alignSelf: 'center',
+    backgroundColor: theme.colors.darkGray,
+    padding: 25,
+    borderRadius: 10,
+    width: Dimensions.get('window').width * 0.8,
+    marginVertical: 10,
+    marginBottom: 20,
+    marginHorizontal: 5
   }
 })

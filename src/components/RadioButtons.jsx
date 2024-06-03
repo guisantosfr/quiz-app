@@ -1,6 +1,5 @@
-import { FlatList, Pressable, StyleSheet, Text } from 'react-native';
+import { Dimensions, FlatList, Pressable, StyleSheet, Text } from 'react-native';
 import { useState } from 'react';
-import globalStyles from '../utils/globalStyles';
 import theme from '../theme';
 
 export default function RadioButtons({ data, onSelect }) {
@@ -22,23 +21,19 @@ export default function RadioButtons({ data, onSelect }) {
   return (
       <FlatList
         data={data}
-        columnWrapperStyle={{flexWrap: 'wrap'}}
         keyExtractor={item => item._id}
         renderItem={renderItem}
-        numColumns={2}
-        style={globalStyles.list}
       />
-   
   );
 }
 
 const styles = StyleSheet.create({ 
   option: {
-    flexBasis: '40%',
     padding: 30,
     borderRadius: 10,
     marginBottom: 20,
-    marginHorizontal: 5
+    marginHorizontal: 5,
+    width: Dimensions.get('window').width * 0.8
   },
 
   unselected: {

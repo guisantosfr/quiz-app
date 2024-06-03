@@ -18,11 +18,6 @@ export default StyleSheet.create({
     fontSize: theme.fontSizes.large
   },
 
-  list: {
-    flexGrow: 0,
-    height: '70%'
-  },
-
   link: {
     color: theme.colors.lightBlue,
     textDecorationLine: 'underline'
