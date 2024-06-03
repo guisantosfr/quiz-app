@@ -5,10 +5,6 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 
 import HomeScreen from './src/screens/HomeScreen';
 import TeacherScreen from './src/screens/TeacherScreen';
-import ConnectScreen from './src/screens/ConnectScreen';
-import NewClassScreen from './src/screens/NewClassScreen';
-import NewQuizScreen from './src/screens/NewQuizScreen';
-import ApplyQuizScreen from './src/screens/ApplyQuizScreen';
 import ClassDetailScreen from './src/screens/ClassDetailScreen';
 import QuizDetailScreen from './src/screens/QuizDetailScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
@@ -34,6 +30,9 @@ export default function App() {
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='Teacher' component={TeacherScreen} />
         <Stack.Screen name='Student' component={StudentScreen} />
+
+        <Stack.Screen name='Class Detail' component={ClassDetailScreen} />
+        <Stack.Screen name='Quiz Detail' component={QuizDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     </RootSiblingParent>

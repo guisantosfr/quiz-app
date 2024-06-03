@@ -20,7 +20,7 @@ export default StyleSheet.create({
 
   list: {
     flexGrow: 0,
-    height: '70%',  
+    height: '70%'
   },
 
   link: {

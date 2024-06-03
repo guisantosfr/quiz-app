@@ -26,11 +26,9 @@ export default function ListClassesScreen({ navigation }) {
                 <Text style={[globalStyles.text, globalStyles.title]}>Minhas turmas</Text>
                 <FlatList
                   data={classes}
-                  columnWrapperStyle={{flexWrap: 'wrap'}}
                   keyExtractor={item => item._id}
                   renderItem={renderItem}
-                  numColumns={2}
-                  style={globalStyles.list}
+                  style={{width: Dimensions.get('window').width * 0.9}}
                 />
               </>
           )
@@ -42,12 +40,12 @@ export default function ListClassesScreen({ navigation }) {
 const styles = StyleSheet.create({
   card: {
     alignItems: 'center',
+    alignSelf: 'center',
     backgroundColor: theme.colors.darkGray,
-    padding: 20,
+    padding: 25,
     borderRadius: 10,
-    width: Dimensions.get('window').width * 0.6,
+    width: Dimensions.get('window').width * 0.8,
     marginVertical: 10,
-    flexBasis: '40%',
     marginBottom: 20,
     marginHorizontal: 5
   }
