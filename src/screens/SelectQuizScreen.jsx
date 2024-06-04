@@ -5,12 +5,12 @@ import useQuizzes from "../hooks/useQuizzes";
 import theme from "../theme";
 import Card from "../components/Card";
 
-export default function SelectQuizScreen() {
+export default function SelectQuizScreen({ navigation }) {
   const { quizzes } = useQuizzes();
 
   const renderItem = ({ item }) => (
     //TODO
-    <Card onPress={() => navigation.navigate('Quiz Detail', { id: item._id})}>
+    <Card onPress={() => navigation.navigate('Confirm', { id: item._id})}>
       <Text>{item.name}</Text>
     </Card>
   )
