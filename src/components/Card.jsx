@@ -1,4 +1,4 @@
-import { Dimensions, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet } from "react-native";
 import theme from '../theme';
 
 export default function Card({ onPress, children }) {

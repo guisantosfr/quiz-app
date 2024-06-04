@@ -5,6 +5,7 @@ import globalStyles from '../utils/globalStyles';
 import { useEffect, useState } from 'react';
 import useQuizzes from '../hooks/useQuizzes';
 import theme from '../theme';
+import CardContent from '../components/CardContent';
 
 export default function QuizDetailScreen() {
   const route = useRoute();
@@ -22,11 +23,11 @@ export default function QuizDetailScreen() {
   }, []);
 
   const renderItem = ({ item }) => (
-    <View>
+    <CardContent>
       <Text>{item.subject}</Text>
       <Text>{item.topic}</Text>
       <Text>{item.question}</Text>
-    </View>
+    </CardContent>
   )
 
   return (

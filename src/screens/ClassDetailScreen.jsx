@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, Dimensions, FlatList, SafeAreaView, Text, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
+import CardContent from '../components/CardContent';
 import useClasses from '../hooks/useClasses';
 import globalStyles from '../utils/globalStyles';
 import theme from '../theme';
@@ -21,11 +22,11 @@ export default function ClassDetailScreen() {
   }, []);
 
   const renderItem = ({ item }) => (
-    <View>
+    <CardContent>
       <Text>{item._id}</Text>
       <Text>{item.name}</Text>
       <Text>{item.email}</Text>
-    </View>
+    </CardContent>
   )
 
   return (
