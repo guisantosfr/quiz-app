@@ -26,7 +26,7 @@ export default function ListQuizzesScreen({ navigation }) {
               <Text style={globalStyles.text}>Não há questionários cadastrados</Text>
               :
               <>
-                <Text style={[globalStyles.text, globalStyles.title]}>Meus questionários</Text>
+                <Text style={[globalStyles.text, globalStyles.heading]}>Meus questionários</Text>
                 <FlatList
                   data={quizzes}
                   keyExtractor={item => item._id}

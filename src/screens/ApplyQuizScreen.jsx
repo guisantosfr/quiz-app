@@ -80,7 +80,8 @@ export default function ApplyQuizScreen() {
       case 0:
         return(
           <>
-            <Text style={[globalStyles.title, globalStyles.text]}>Passo 1 de 3 - Selecionar questionário</Text>
+            <Text style={[globalStyles.subheading, globalStyles.text, styles.stepTitle]}>Passo 1 de 3</Text>
+            <Text style={[globalStyles.subheading, globalStyles.text, styles.stepDescription]}>Selecionar questionário</Text>
             {
               !quizzes ?
               <ActivityIndicator size="large" color={theme.colors.lightBlue} />
@@ -93,7 +94,9 @@ export default function ApplyQuizScreen() {
       case 1:
         return(
           <>
-            <Text style={[globalStyles.title, globalStyles.text]}>Passo 2 de 3 - Selecionar turma</Text>
+            <Text style={[globalStyles.subheading, globalStyles.text, styles.stepTitle]}>Passo 2 de 3</Text>
+            <Text style={[globalStyles.subheading, globalStyles.text, styles.stepDescription]}>Selecionar turma</Text>
+
             {
               !classes ?
               <ActivityIndicator size="large" color={theme.colors.lightBlue} />
@@ -116,9 +119,10 @@ export default function ApplyQuizScreen() {
             <ActivityIndicator size="large" color={theme.colors.lightBlue} /> :
 
           <>
-            <Text style={[globalStyles.title, globalStyles.text]}>Passo 3 de 3 - Confirmar dados</Text>
+            <Text style={[globalStyles.subheading, globalStyles.text, styles.stepTitle]}>Passo 3 de 3</Text>
+            <Text style={[globalStyles.subheading, globalStyles.text, styles.stepDescription]}>Confirmar dados</Text>
 
-            <View style={ { flexGrow: 0, height: '70%', }}>
+            <View style={ { flexGrow: 0, height: '50%', }}>
               <Text style={globalStyles.text}>Questionário: {quizToApply.name}</Text>
               <Text style={globalStyles.text}>Turma: {classToApply.name}</Text>
             </View>
@@ -152,6 +156,14 @@ export default function ApplyQuizScreen() {
 }
 
 const styles = StyleSheet.create({
+  stepTitle: {
+    marginTop: 75
+  },
+
+  stepDescription: {
+    marginBottom: 50
+  },
+
   buttonArea: {
     flex: 1,
     flexWrap: 'wrap',

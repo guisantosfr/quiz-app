@@ -24,7 +24,7 @@ export default function ListClassesScreen({ navigation }) {
               <Text style={globalStyles.text}>Não há turmas cadastradas</Text>
               :
               <>
-                <Text style={[globalStyles.text, globalStyles.title]}>Minhas turmas</Text>
+                <Text style={[globalStyles.text, globalStyles.heading]}>Minhas turmas</Text>
                 <FlatList
                   data={classes}
                   keyExtractor={item => item._id}

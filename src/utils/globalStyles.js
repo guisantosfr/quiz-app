@@ -12,10 +12,15 @@ export default StyleSheet.create({
     color: theme.colors.black
   },
 
-  title: {
+  heading: {
     marginVertical: 40,
     fontWeight: 'bold',
     fontSize: theme.fontSizes.large
+  },
+
+  subheading:{
+    marginVertical: 25,
+    fontSize: theme.fontSizes.medium
   },
 
   link: {

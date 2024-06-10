@@ -30,7 +30,7 @@ export default function LoginScreen() {
                 touched
             }) => (
             <SafeAreaView style={globalStyles.container}>
-                <Text style={globalStyles.title}>Bem-vindo de volta</Text>    
+                <Text style={globalStyles.heading}>Bem-vindo de volta</Text>    
                 <Input 
                     placeholder="Email"
                     onChangeText={handleChange('email')}

@@ -30,7 +30,7 @@ export default function ConfirmQuizScreen({ navigation }) {
                 :
                 (
                     <>
-                        <Text style={globalStyles.title}>{selectedQuiz.name}</Text>
+                        <Text style={globalStyles.heading}>{selectedQuiz.name}</Text>
                         <Text>{selectedQuiz.questions.length} questões</Text>
 
                         <Button text="Voltar" onPress={() => {navigation.goBack()}}/>

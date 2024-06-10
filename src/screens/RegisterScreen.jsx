@@ -47,7 +47,7 @@ export default function RegisterScreen() {
             touched
         }) => (
         <SafeAreaView style={globalStyles.container}>
-            <Text style={globalStyles.title}>Cadastre-se</Text>
+            <Text style={globalStyles.heading}>Cadastre-se</Text>
 
             <Input 
             placeholder="Email" 
