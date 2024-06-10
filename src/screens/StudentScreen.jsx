@@ -1,7 +1,5 @@
 import ConnectScreen from './ConnectScreen';
 import SelectQuizScreen from './SelectQuizScreen';
-import ActivityScreen from './ActivityScreen';
-import AccountInfoScreen from './AccountInfoScreen';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome';
@@ -33,22 +31,6 @@ export default function StudentScreen() {
          options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="question-answer" color={color} size={size}/>
-          )
-         }}/>
-        <Tab.Screen
-         name="Atividade"
-         component={ActivityScreen}
-         options={{
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesomeIcons name="history" color={color} size={size}/>
-          )
-         }}/>
-        <Tab.Screen
-         name="Conta"
-         component={AccountInfoScreen}
-         options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="account-circle" color={color} size={size}/>
           )
          }}/>
       </Tab.Navigator>
