@@ -2,9 +2,27 @@ import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import theme from '../theme';
 
-export default function Button({ text, onPress }) {
+const widths = {
+  large: Dimensions.get('window').width * 0.6,
+  small: Dimensions.get('window').width * 0.3
+}
+
+const colors = {
+  primary:{
+    background: theme.colors.darkBlue
+  },
+  secondary: {
+    background: theme.colors.darkGray
+  }
+}
+
+export default function Button({ text, width = 'large', color = 'primary', onPress }) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={[
+      styles.button,
+      { width: widths[width] },
+      { backgroundColor: colors[color].background }
+      ]} onPress={onPress}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   )
